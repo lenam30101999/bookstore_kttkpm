@@ -5,7 +5,7 @@ import com.linh.pttkht2.model.Publisher;
 
 import java.util.List;
 
-public class PublisherDAOImpl implements PublisherDAO {
+public class PublisherDAOImpl extends ConnectionDAO implements PublisherDAO {
 
 	public void addPublisher(Publisher p) {
 		// TODO - implement PublisherDAOImpl.addPublisher

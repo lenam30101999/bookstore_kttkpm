@@ -7,16 +7,19 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 </head>
+
 <body>
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark"
          style="background-color: black">
         <div>
-            <a href="https://www.javaguides.net" class="navbar-brand"> LOGIN </a>
+            <a href="index.jsp" class="navbar-brand"> LOGIN </a>
         </div>
 
         <ul class="navbar-nav">
-            class="nav-link">REGISTER</a></li>
+            <li><a href="register.jsp"
+                   class="nav-link">REGISTER</a></li>
         </ul>
     </nav>
 </header>
@@ -28,8 +31,7 @@
             <form action="checkLogin" method="post">
 
                 <caption>
-                    <h2> LOGIN
-                    </h2>
+                    <h2> LOGIN </h2>
                 </caption>
 
                 <fieldset class="form-group">

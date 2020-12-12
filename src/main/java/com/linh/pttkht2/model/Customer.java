@@ -6,15 +6,28 @@ public class Customer {
 
 	private int custID;
 	private String phoneNum;
-	private FullName fullName;
-	private Address address;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String city;
+	private String street;
+	private String username;
+	private String password;
 	private List<Order> orders;
 
-	public Customer(int custID, String phoneNum, FullName fullName, Address address, List<Order> orders) {
+	public Customer() {
+	}
+
+	public Customer(int custID, String phoneNum, String firstName, String middleName, String lastName, String city, String street, String username, String password, List<Order> orders) {
 		this.custID = custID;
 		this.phoneNum = phoneNum;
-		this.fullName = fullName;
-		this.address = address;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.city = city;
+		this.street = street;
+		this.username = username;
+		this.password = password;
 		this.orders = orders;
 	}
 
@@ -34,20 +47,60 @@ public class Customer {
 		this.phoneNum = phoneNum;
 	}
 
-	public FullName getFullName() {
-		return fullName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFullName(FullName fullName) {
-		this.fullName = fullName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public Address getAddress() {
-		return address;
+	public String getMiddleName() {
+		return middleName;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<Order> getOrders() {

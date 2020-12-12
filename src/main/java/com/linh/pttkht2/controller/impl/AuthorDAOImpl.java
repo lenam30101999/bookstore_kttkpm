@@ -6,7 +6,7 @@ import com.linh.pttkht2.model.Author;
 
 import java.util.List;
 
-public class AuthorDAOImpl implements AuthorDAO {
+public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
 
 	public void addAuthor(Author a) {
 		// TODO - implement AuthorDAOImpl.addAuthor
