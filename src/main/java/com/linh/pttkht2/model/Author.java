@@ -3,37 +3,38 @@ package com.linh.pttkht2.model;
 import java.util.Date;
 
 public class Author {
-    private int authorId;
-    private String name;
-    private Date dob;
 
-    public Author(int authorId, String name, Date dob) {
-        this.authorId = authorId;
-        this.name = name;
-        this.dob = dob;
-    }
+	private int authorID;
+	private String name;
+	private Date dob;
 
-    public int getAuthorId() {
-        return authorId;
-    }
+	public Author(int authorID, String name, Date dob) {
+		this.authorID = authorID;
+		this.name = name;
+		this.dob = dob;
+	}
 
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
+	public int getAuthorID() {
+		return authorID;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setAuthorID(int authorID) {
+		this.authorID = authorID;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Date getDob() {
-        return dob;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 }

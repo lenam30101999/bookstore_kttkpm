@@ -2,28 +2,37 @@ package com.linh.pttkht2.model;
 
 public class Shipment {
 
-	private int id;
+	private int shipID;
 	private double price;
 	private Order order;
 
-	public void add() {
-		// TODO - implement Shipment.add
-		throw new UnsupportedOperationException();
+	public Shipment(int shipID, double price, Order order) {
+		this.shipID = shipID;
+		this.price = price;
+		this.order = order;
 	}
 
-	public void save() {
-		// TODO - implement Shipment.save
-		throw new UnsupportedOperationException();
+	public int getShipID() {
+		return shipID;
 	}
 
-	public void update() {
-		// TODO - implement Shipment.update
-		throw new UnsupportedOperationException();
+	public void setShipID(int shipID) {
+		this.shipID = shipID;
 	}
 
-	public void delete() {
-		// TODO - implement Shipment.delete
-		throw new UnsupportedOperationException();
+	public double getPrice() {
+		return price;
 	}
 
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 }

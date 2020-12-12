@@ -1,47 +1,48 @@
 package com.linh.pttkht2.model;
 
 public class Address {
-    private int id;
-    private String city;
-    private String district;
-    private String street;
 
-    public Address(int id, String city, String district, String street) {
-        this.id = id;
-        this.city = city;
-        this.district = district;
-        this.street = street;
-    }
+	private int id;
+	private String city;
+	private String district;
+	private String street;
 
-    public int getId() {
-        return id;
-    }
+	public Address(int id, String city, String district, String street) {
+		this.id = id;
+		this.city = city;
+		this.district = district;
+		this.street = street;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public String getDistrict() {
-        return district;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public void setDistrict(String district) {
-        this.district = district;
-    }
+	public String getDistrict() {
+		return district;
+	}
 
-    public String getStreet() {
-        return street;
-    }
+	public void setDistrict(String district) {
+		this.district = district;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
 }
