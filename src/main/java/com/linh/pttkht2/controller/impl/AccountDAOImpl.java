@@ -9,7 +9,7 @@ import java.util.List;
 public class AccountDAOImpl implements AccountDAO {
 	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "sandstorm";
+	private String jdbcPassword = "phamlong4101999";
 
 	private static final String SEARCH = "select * from Account where username = ? and password = ?";
 
