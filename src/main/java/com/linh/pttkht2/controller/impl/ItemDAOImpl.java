@@ -6,7 +6,7 @@ import com.linh.pttkht2.model.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDAOImpl implements ItemDAO {
+public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 
 	public void addItem(Item i) {
 		// TODO - implement ItemDAOImpl.addItem

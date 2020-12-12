@@ -2,7 +2,7 @@ package com.linh.pttkht2.controller.impl;
 
 import com.linh.pttkht2.controller.dao.BookDAO;
 
-public class BookDAOImpl implements BookDAO {
+public class BookDAOImpl extends ConnectionDAO implements BookDAO {
 
 	public void addBook() {
 		// TODO - implement BookDAOImpl.addBook

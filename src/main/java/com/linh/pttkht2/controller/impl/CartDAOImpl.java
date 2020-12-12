@@ -5,7 +5,7 @@ import com.linh.pttkht2.model.Cart;
 
 import java.util.List;
 
-public class CartDAOImpl implements CartDAO {
+public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 
 	public void add(Cart c) {
 		// TODO - implement CartDAOImpl.add

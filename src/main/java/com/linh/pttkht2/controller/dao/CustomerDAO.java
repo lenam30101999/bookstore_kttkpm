@@ -1,8 +1,11 @@
 package com.linh.pttkht2.controller.dao;
 
-public interface CustomerDAO {
+import com.linh.pttkht2.model.Customer;
 
-	void addCustomer();
+public interface CustomerDAO {
+	Customer checkLogin(Customer customerCheck);
+
+	void addCustomer(Customer customer);
 
 	void getCustomer();
 

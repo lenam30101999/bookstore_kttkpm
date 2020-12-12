@@ -2,7 +2,7 @@ package com.linh.pttkht2.controller.impl;
 
 import com.linh.pttkht2.controller.dao.OrderDAO;
 
-public class OrderDAOImpl implements OrderDAO {
+public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
 
 	public void addOrder() {
 		// TODO - implement OrderDAOImpl.addOrder
