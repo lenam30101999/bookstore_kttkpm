@@ -5,14 +5,16 @@ public class Account {
 	private int id;
 	private String username;
 	private String password;
+	private int customerId;
 
-	public Account(int id, String username, String password) {
+	public Account(int id, String username, String password, int customerId) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.customerId = customerId;
 	}
 
-    public Account(String username, String password) {
+	public Account() {
     }
 
     public int getId() {
@@ -37,5 +39,13 @@ public class Account {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 }

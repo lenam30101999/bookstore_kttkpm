@@ -11,7 +11,7 @@ public class AccountDAOImpl implements AccountDAO {
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "123456";
 
-	private static final String SEARCH = "select username, password from account where username = ? and password = ?";
+	private static final String SEARCH = "select * from account where username = ? and password = ?";
 
 	protected Connection getConnection() {
 		Connection connection = null;
@@ -27,29 +27,35 @@ public class AccountDAOImpl implements AccountDAO {
 		}
 		return connection;
 	}
-	public Account checkLogin(String username, String password) {
+	public Account checkLogin(Account account) {
 		// TODO - implement AccountDAOImpl.checkLogin
-			Account account = null;
 			// Step 1: Establishing a Connection
 			try (Connection connection = getConnection();
 				 // Step 2:Create a statement using connection object
 				 PreparedStatement preparedStatement = connection.prepareStatement(SEARCH);) {
-				preparedStatement.setString(1, username);
-				preparedStatement.setString(2, password);
+				preparedStatement.setString(1, account.getUsername());
+				preparedStatement.setString(2, account.getPassword());
 				System.out.println(preparedStatement);
 				// Step 3: Execute the query or update query
 				ResultSet rs = preparedStatement.executeQuery();
 
 				// Step 4: Process the ResultSet object.
 				while (rs.next()) {
-					String name = rs.getString("name");
-					String pass = rs.getString("password");
-					account = new Account(1,name, pass);
+					int id = rs.getInt("id");
+					String username = rs.getString("username");
+					String password = rs.getString("password");
+					int customerId = rs.getInt("CustomerID");
+
+					if (username.equals(account.getUsername()) && password.equals(account.getPassword())){
+						account.setId(id);
+						account.setCustomerId(customerId);
+					}
 				}
 			} catch (SQLException e) {
-
+				e.printStackTrace();
 			}
-				return account;
+
+			return account;
 	}
 	public void addAccount(Account a) {
 		// TODO - implement AccountDAOImpl.addAccount

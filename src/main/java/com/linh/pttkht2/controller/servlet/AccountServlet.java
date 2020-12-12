@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
@@ -38,10 +39,17 @@ public class AccountServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Account account = new Account(username, password);
-        accountDAO.checkLogin(username,password);
-        response.sendRedirect("list");
+        Account account = new Account();
+        account.setUsername(username);
+        account.setPassword(password);
 
+        account = accountDAO.checkLogin(account);
+        if (account != null) {
+            HttpSession session = request.getSession(false);
+            session.setAttribute("customerId", account.getCustomerId());
+            response.sendRedirect("list");
+            return;
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
