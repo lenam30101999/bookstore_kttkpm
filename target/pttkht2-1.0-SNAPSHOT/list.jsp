@@ -23,7 +23,7 @@
             <th>Name</th>
             <th>Price</th>
 <%--            <th>Price</th>--%>
-            <th>Actions</th>
+<%--            <th>Actions</th>--%>
         </tr>
         <c:forEach var="item" items="${listBook}">
             <tr>
@@ -31,7 +31,7 @@
                 <td><c:out value="${item.name}" /></td>
                 <td><c:out value="${item.price}" /></td>
                 <td>
-                    <a href="/edit?id=<c:out value='${book.itemID}'/>">Add to cart</a>
+                    <a href="/edit?id=<c:out value='${book.itemID}' />">Add to cart</a>
 <%--                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
 <%--                    <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>--%>
                 </td>
