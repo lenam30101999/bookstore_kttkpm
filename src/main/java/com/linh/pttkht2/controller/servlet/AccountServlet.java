@@ -36,8 +36,11 @@ public class AccountServlet {
             throws SQLException, IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Account account=new Account(username,password);
-        accountDAO.checkLogin(username,password);
+        Account account = new Account();
+        account.setUsername(username);
+        account.setPassword(password);
+
+        account = accountDAO.checkLogin(account);
         response.sendRedirect("list");
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
