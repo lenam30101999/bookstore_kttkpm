@@ -7,7 +7,7 @@ import com.linh.pttkht2.model.Publisher;
 
 import java.sql.*;
 
-public class BookDAOImpl implements BookDAO {
+public class BookDAOImpl extends ConnectionDAO implements BookDAO {
 
 	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
 	private String jdbcUsername = "root";

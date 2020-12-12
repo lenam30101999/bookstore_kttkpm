@@ -8,11 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AuthorDAOImpl implements AuthorDAO {
-
-	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
-	private String jdbcUsername = "root";
-	private String jdbcPassword = "phamlong4101999";
+public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
 
 	private static final String SEARCH = "select * from Account where username = ? and password = ?";
 

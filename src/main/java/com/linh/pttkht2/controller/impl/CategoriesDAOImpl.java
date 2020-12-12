@@ -5,7 +5,7 @@ import com.linh.pttkht2.model.Categories;
 
 import java.util.List;
 
-public class CategoriesDAOImpl implements CategoriesDAO {
+public class CategoriesDAOImpl extends ConnectionDAO implements CategoriesDAO {
 
 	public void addCategory(Categories c) {
 		// TODO - implement CategoriesDAOImpl.addCategory

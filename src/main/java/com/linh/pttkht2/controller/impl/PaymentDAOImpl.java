@@ -6,7 +6,7 @@ import com.linh.pttkht2.model.Shipment;
 
 import java.util.List;
 
-public class PaymentDAOImpl implements PaymentDAO {
+public class PaymentDAOImpl extends ConnectionDAO implements PaymentDAO {
 
 	public void add(Payment p) {
 		// TODO - implement PaymentDAOImpl.add

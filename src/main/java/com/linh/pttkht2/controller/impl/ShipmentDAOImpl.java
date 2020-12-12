@@ -5,7 +5,7 @@ import com.linh.pttkht2.model.Shipment;
 
 import java.util.List;
 
-public class ShipmentDAOImpl implements ShipmentDAO {
+public class ShipmentDAOImpl extends ConnectionDAO implements ShipmentDAO {
 
 	public void add(Shipment s) {
 		// TODO - implement ShipmentDAOImpl.add

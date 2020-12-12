@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDAOImpl implements ItemDAO {
+public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 
 	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
 	private String jdbcUsername = "root";
