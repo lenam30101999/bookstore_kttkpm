@@ -3,6 +3,7 @@ package com.linh.pttkht2.controller.impl;
 import com.linh.pttkht2.controller.dao.ItemDAO;
 import com.linh.pttkht2.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDAOImpl implements ItemDAO {
@@ -13,8 +14,11 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	public List<Item> getItems() {
-		// TODO - implement ItemDAOImpl.getItems
-		throw new UnsupportedOperationException();
+		//TODO: Remove Test code
+		List<Item> items = new ArrayList<>();
+		items.add(new Item(1, "Da`o", 1000));
+		items.add(new Item(2, "XS Max", 1000));
+		return items;
 	}
 
 	public Item getItem(int id) {
