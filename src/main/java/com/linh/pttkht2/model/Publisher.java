@@ -5,24 +5,24 @@ public class Publisher {
 	private int pubID;
 	private String name;
 
-	public void add() {
-		// TODO - implement Publisher.add
-		throw new UnsupportedOperationException();
+	public Publisher(int pubID, String name) {
+		this.pubID = pubID;
+		this.name = name;
 	}
 
-	public void save() {
-		// TODO - implement Publisher.save
-		throw new UnsupportedOperationException();
+	public int getPubID() {
+		return pubID;
 	}
 
-	public void update() {
-		// TODO - implement Publisher.update
-		throw new UnsupportedOperationException();
+	public void setPubID(int pubID) {
+		this.pubID = pubID;
 	}
 
-	public void delete() {
-		// TODO - implement Publisher.delete
-		throw new UnsupportedOperationException();
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 }

@@ -2,28 +2,37 @@ package com.linh.pttkht2.model;
 
 public class Item {
 
-	private int id;
+	private int itemID;
 	private String name;
 	private double price;
 
-	public void add() {
-		// TODO - implement Item.add
-		throw new UnsupportedOperationException();
+	public Item(int itemID, String name, double price) {
+		this.itemID = itemID;
+		this.name = name;
+		this.price = price;
 	}
 
-	public void save() {
-		// TODO - implement Item.save
-		throw new UnsupportedOperationException();
+	public int getItemID() {
+		return itemID;
 	}
 
-	public void update() {
-		// TODO - implement Item.update
-		throw new UnsupportedOperationException();
+	public void setItemID(int itemID) {
+		this.itemID = itemID;
 	}
 
-	public void delete() {
-		// TODO - implement Item.delete
-		throw new UnsupportedOperationException();
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

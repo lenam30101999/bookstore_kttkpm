@@ -7,24 +7,42 @@ public class FullName {
 	private String middleName;
 	private String lastName;
 
-	public void addFullName() {
-		// TODO - implement FullName.addFullName
-		throw new UnsupportedOperationException();
+	public FullName(int id, String firstName, String middleName, String lastName) {
+		this.id = id;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
 	}
 
-	public void save() {
-		// TODO - implement FullName.save
-		throw new UnsupportedOperationException();
+	public int getId() {
+		return id;
 	}
 
-	public void update() {
-		// TODO - implement FullName.update
-		throw new UnsupportedOperationException();
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void delete() {
-		// TODO - implement FullName.delete
-		throw new UnsupportedOperationException();
+	public String getFirstName() {
+		return firstName;
 	}
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 }
