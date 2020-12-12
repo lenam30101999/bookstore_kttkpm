@@ -50,7 +50,7 @@ public class AccountServlet extends HttpServlet {
         account.setPassword(password);
 
         account = accountDAO.checkLogin(account);
-        if (account != null) {
+        if (account.getId() != -1) {
             HttpSession session = request.getSession(false);
             session.setAttribute("customerId", account.getCustomerId());
             response.sendRedirect("list");

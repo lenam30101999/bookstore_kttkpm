@@ -7,11 +7,11 @@ import java.sql.*;
 import java.util.List;
 
 public class AccountDAOImpl implements AccountDAO {
-	private String jdbcURL = "jdbc:mysql://127.0.0.1:3306/pttkht_btl?user=root";
+	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
 	private String jdbcUsername = "root";
 	private String jdbcPassword = "sandstorm";
 
-	private static final String SEARCH = "select * from account where username = ? and password = ?";
+	private static final String SEARCH = "select * from Account where username = ? and password = ?";
 
 	protected Connection getConnection() {
 		Connection connection = null;
@@ -28,13 +28,14 @@ public class AccountDAOImpl implements AccountDAO {
 		return connection;
 	}
 	public Account checkLogin(Account account) {
-		// TODO - implement AccountDAOImpl.checkLogin
 			// Step 1: Establishing a Connection
-			try (Connection connection = getConnection();
+			Account dbAccount = new Account(-1, account.getUsername(), account.getPassword(), -1);
+			try {
+				Connection connection = getConnection();
 				 // Step 2:Create a statement using connection object
-				 PreparedStatement preparedStatement = connection.prepareStatement(SEARCH);) {
-				preparedStatement.setString(1, account.getUsername());
-				preparedStatement.setString(2, account.getPassword());
+				 PreparedStatement preparedStatement = connection.prepareStatement(SEARCH);
+				preparedStatement.setString(1, dbAccount.getUsername());
+				preparedStatement.setString(2, dbAccount.getPassword());
 				System.out.println(preparedStatement);
 				// Step 3: Execute the query or update query
 				ResultSet rs = preparedStatement.executeQuery();
@@ -46,16 +47,16 @@ public class AccountDAOImpl implements AccountDAO {
 					String password = rs.getString("password");
 					int customerId = rs.getInt("CustomerID");
 
-					if (username.equals(account.getUsername()) && password.equals(account.getPassword())){
-						account.setId(id);
-						account.setCustomerId(customerId);
+					if (username.equals(dbAccount.getUsername()) && password.equals(dbAccount.getPassword())){
+						dbAccount.setId(id);
+						dbAccount.setCustomerId(customerId);
 					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 
-			return account;
+			return dbAccount;
 	}
 	public void addAccount(Account a) {
 		// TODO - implement AccountDAOImpl.addAccount
