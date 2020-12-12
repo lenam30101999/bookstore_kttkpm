@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AccountDAO {
 
-	Account checkLogin(String username, String password);
+	Account checkLogin(Account account);
 
 	void addAccount(Account a);
 

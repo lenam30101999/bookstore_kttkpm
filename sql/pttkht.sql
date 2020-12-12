@@ -1,18 +1,18 @@
 create database pttkht_btl;
 use pttkht_btl;
-CREATE TABLE FullName (Id int(10) NOT NULL AUTO_INCREMENT, CustomerCustID int(10) NOT NULL, FirstName varchar(255), MiddleName varchar(255), LastName varchar(255), PRIMARY KEY (Id));
-CREATE TABLE Address (Id int(10) NOT NULL AUTO_INCREMENT, CustomerCustID int(10) NOT NULL, City varchar(255), District varchar(255), Street varchar(255), PRIMARY KEY (Id));
+CREATE TABLE FullName (Id int(10) NOT NULL AUTO_INCREMENT, CustomerID int(10) NOT NULL, FirstName varchar(255), MiddleName varchar(255), LastName varchar(255), PRIMARY KEY (Id));
+CREATE TABLE Address (Id int(10) NOT NULL AUTO_INCREMENT, CustomerID int(10) NOT NULL, City varchar(255), District varchar(255), Street varchar(255), PRIMARY KEY (Id));
 CREATE TABLE Item (ItemID int(10) NOT NULL AUTO_INCREMENT, CartCartID int(10) NOT NULL, Name varchar(255), Price double NOT NULL, PRIMARY KEY (ItemID));
 CREATE TABLE Cart (CartID int(10) NOT NULL AUTO_INCREMENT, OrderOrderID int(10) NOT NULL, Quantity int(10) NOT NULL, PRIMARY KEY (CartID));
 CREATE TABLE Payment (PayID int(10) NOT NULL AUTO_INCREMENT, ShipmentShipID int(10) NOT NULL, CartCartID int(10) NOT NULL, Price double NOT NULL, PRIMARY KEY (PayID));
 CREATE TABLE Customer (CustID int(10) NOT NULL AUTO_INCREMENT, PhoneNum varchar(255), PRIMARY KEY (CustID));
 CREATE TABLE Shipment (ShipID int(10) NOT NULL AUTO_INCREMENT, Price double NOT NULL, `Order` int(10), PRIMARY KEY (ShipID));
-CREATE TABLE `Order` (OrderID int(10) NOT NULL AUTO_INCREMENT, PaymentPayID int(10) NOT NULL, CustomerCustID int(10) NOT NULL, ShipmentShipID int(10) NOT NULL, `Date` date, Price double NOT NULL, PRIMARY KEY (OrderID));
+CREATE TABLE `Order` (OrderID int(10) NOT NULL AUTO_INCREMENT, PaymentPayID int(10) NOT NULL, CustomerID int(10) NOT NULL, ShipmentShipID int(10) NOT NULL, `Date` date, Price double NOT NULL, PRIMARY KEY (OrderID));
 CREATE TABLE Book (BookID int(10) NOT NULL AUTO_INCREMENT, ItemItemID int(10) NOT NULL, AuthorAuthorID int(10) NOT NULL, publisherPubID int(10) NOT NULL, Name varchar(255), NumPage int(10) NOT NULL, PRIMARY KEY (BookID));
 CREATE TABLE publisher (PubID int(10) NOT NULL AUTO_INCREMENT, Name varchar(255), PRIMARY KEY (PubID));
 CREATE TABLE Author (AuthorID int(10) NOT NULL AUTO_INCREMENT, Name varchar(255), Dob date, PRIMARY KEY (AuthorID));
 CREATE TABLE Categories (CateID int(10) NOT NULL AUTO_INCREMENT, Name varchar(255), PRIMARY KEY (CateID));
-CREATE TABLE Account (Id int(10) NOT NULL AUTO_INCREMENT, CustomerCustID int(10) NOT NULL, Username varchar(255), Password varchar(255), PRIMARY KEY (Id));
+CREATE TABLE Account (Id int(10) NOT NULL AUTO_INCREMENT, CustomerID int(10) NOT NULL, Username varchar(255), Password varchar(255), PRIMARY KEY (Id));
 CREATE TABLE Book_Cate (BookBookID int(10) NOT NULL, CategoriesCateID int(10) NOT NULL, PRIMARY KEY (BookBookID, CategoriesCateID));
 ALTER TABLE Book ADD CONSTRAINT FKBook964012 FOREIGN KEY (publisherPubID) REFERENCES publisher (PubID);
 ALTER TABLE Book ADD CONSTRAINT FKBook869555 FOREIGN KEY (AuthorAuthorID) REFERENCES Author (AuthorID);
@@ -23,10 +23,10 @@ ALTER TABLE Item ADD CONSTRAINT FKItem73245 FOREIGN KEY (CartCartID) REFERENCES 
 ALTER TABLE Payment ADD CONSTRAINT FKPayment756603 FOREIGN KEY (CartCartID) REFERENCES Cart (CartID);
 ALTER TABLE Payment ADD CONSTRAINT FKPayment403459 FOREIGN KEY (ShipmentShipID) REFERENCES Shipment (ShipID);
 ALTER TABLE `Order` ADD CONSTRAINT FKOrder922524 FOREIGN KEY (ShipmentShipID) REFERENCES Shipment (ShipID);
-ALTER TABLE `Order` ADD CONSTRAINT FKOrder439447 FOREIGN KEY (CustomerCustID) REFERENCES Customer (CustID);
+ALTER TABLE `Order` ADD CONSTRAINT FKOrder439447 FOREIGN KEY (CustomerID) REFERENCES Customer (CustID);
 ALTER TABLE Cart ADD CONSTRAINT FKCart335057 FOREIGN KEY (OrderOrderID) REFERENCES `Order` (OrderID);
-ALTER TABLE FullName ADD CONSTRAINT FKFullName604603 FOREIGN KEY (CustomerCustID) REFERENCES Customer (CustID);
-ALTER TABLE Address ADD CONSTRAINT FKAddress931448 FOREIGN KEY (CustomerCustID) REFERENCES Customer (CustID);
+ALTER TABLE FullName ADD CONSTRAINT FKFullName604603 FOREIGN KEY (CustomerID) REFERENCES Customer (CustID);
+ALTER TABLE Address ADD CONSTRAINT FKAddress931448 FOREIGN KEY (CustomerID) REFERENCES Customer (CustID);
 ALTER TABLE `Order` ADD CONSTRAINT FKOrder284128 FOREIGN KEY (PaymentPayID) REFERENCES Payment (PayID);
-ALTER TABLE Account ADD CONSTRAINT FKAccount558301 FOREIGN KEY (CustomerCustID) REFERENCES Customer (CustID);
+ALTER TABLE Account ADD CONSTRAINT FKAccount558301 FOREIGN KEY (CustomerID) REFERENCES Customer (CustID);
 
