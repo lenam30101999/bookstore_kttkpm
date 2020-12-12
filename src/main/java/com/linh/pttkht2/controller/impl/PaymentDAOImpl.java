@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.PaymentDAO;
+import com.linh.pttkht2.controller.dao.PaymentDAO;
 import com.linh.pttkht2.model.Payment;
 import com.linh.pttkht2.model.Shipment;
 

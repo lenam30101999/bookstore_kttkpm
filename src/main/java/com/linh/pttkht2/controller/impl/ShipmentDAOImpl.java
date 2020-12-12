@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.ShipmentDAO;
+import com.linh.pttkht2.controller.dao.ShipmentDAO;
 import com.linh.pttkht2.model.Shipment;
 
 import java.util.List;

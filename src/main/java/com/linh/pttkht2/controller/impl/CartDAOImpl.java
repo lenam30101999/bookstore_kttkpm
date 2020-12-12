@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.CartDAO;
+import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.model.Cart;
 
 import java.util.List;

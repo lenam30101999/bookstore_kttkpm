@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.CustomerDAO;
+import com.linh.pttkht2.controller.dao.CustomerDAO;
 
 public class CustomerDAOImpl implements CustomerDAO {
 

@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.AccountDAO;
+import com.linh.pttkht2.controller.dao.AccountDAO;
 import com.linh.pttkht2.model.Account;
 
 import java.sql.*;

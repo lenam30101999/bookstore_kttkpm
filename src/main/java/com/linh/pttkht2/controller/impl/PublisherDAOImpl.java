@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.PublisherDAO;
+import com.linh.pttkht2.controller.dao.PublisherDAO;
 import com.linh.pttkht2.model.Publisher;
 
 import java.util.List;

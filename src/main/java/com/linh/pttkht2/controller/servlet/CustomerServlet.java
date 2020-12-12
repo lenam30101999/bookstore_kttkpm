@@ -1,7 +1,6 @@
-package com.linh.pttkht2.web;
+package com.linh.pttkht2.controller.servlet;
 
-import com.linh.pttkht2.dao.CustomerDAO;
-import com.linh.pttkht2.model.Customer;
+import com.linh.pttkht2.controller.dao.CustomerDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 public class CustomerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;

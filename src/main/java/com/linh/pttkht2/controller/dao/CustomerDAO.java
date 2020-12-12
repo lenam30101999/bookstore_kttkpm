@@ -1,4 +1,4 @@
-package com.linh.pttkht2.dao;
+package com.linh.pttkht2.controller.dao;
 
 public interface CustomerDAO {
 

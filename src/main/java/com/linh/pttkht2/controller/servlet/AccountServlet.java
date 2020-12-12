@@ -1,6 +1,6 @@
-package com.linh.pttkht2.web;
+package com.linh.pttkht2.controller.servlet;
 
-import com.linh.pttkht2.dao.AccountDAO;
+import com.linh.pttkht2.controller.dao.AccountDAO;
 import com.linh.pttkht2.model.Account;
 
 import javax.servlet.RequestDispatcher;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
-import java.util.List;
 
 public class AccountServlet {
     AccountDAO accountDAO;

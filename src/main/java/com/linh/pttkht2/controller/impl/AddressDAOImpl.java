@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.AddressDAO;
+import com.linh.pttkht2.controller.dao.AddressDAO;
 import com.linh.pttkht2.model.Address;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
-import com.linh.pttkht2.dao.FullNameDAO;
+import com.linh.pttkht2.controller.dao.FullNameDAO;
 import com.linh.pttkht2.model.FullName;
 
 import java.util.List;

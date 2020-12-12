@@ -1,12 +1,7 @@
-package com.linh.pttkht2.dao;
+package com.linh.pttkht2.controller.dao;
 
-import com.linh.pttkht2.impl.AccountDAOImpl;
 import com.linh.pttkht2.model.Account;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public interface AccountDAO {

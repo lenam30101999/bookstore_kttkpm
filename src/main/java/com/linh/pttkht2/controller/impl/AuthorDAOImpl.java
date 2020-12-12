@@ -1,7 +1,7 @@
-package com.linh.pttkht2.impl;
+package com.linh.pttkht2.controller.impl;
 
 
-import com.linh.pttkht2.dao.AuthorDAO;
+import com.linh.pttkht2.controller.dao.AuthorDAO;
 import com.linh.pttkht2.model.Author;
 
 import java.util.List;
