@@ -65,7 +65,7 @@
                         <a href="/infobook?id=<c:out value='${book.id}'/>" class="btn btn-info">Info Book</a>
                     </td>
                     <td>
-                        <a href="/edit?id=<c:out value='${book.itemID}' />" class="btn btn-success">Add to cart</a>
+                        <a href="/add?id=<c:out value='${book.id}' />" class="btn btn-success">Add to cart</a>
                     </td>
                 </tr>
             </c:forEach>

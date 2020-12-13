@@ -14,11 +14,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>itemServlet</servlet-name>
-        <servlet-class>com.linh.pttkht2.controller.servlet.ItemServlet</servlet-class>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.linh.pttkht2.controller.servlet.BookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>itemServlet</servlet-name>
+        <servlet-name>BookServlet</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
 
@@ -28,6 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/add</url-pattern>
         <url-pattern>/listCart</url-pattern>
         <url-pattern>/payment</url-pattern>
         <url-pattern>/delete</url-pattern>

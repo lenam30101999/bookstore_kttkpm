@@ -51,9 +51,10 @@ public class CartServlet extends HttpServlet {
     private void addToCart(HttpServletRequest request, HttpServletResponse response)
         throws SQLException, IOException, ServletException {
         Book book = new Book();
-        int quantity = (int) request.getAttribute("quantity");
-
-
+//        int quantity = (int) request.getAttribute("quantity");
+        int quantity=1;
+        int id = Integer.parseInt(request.getParameter("id"));
+        book.setBookID(id);
         Cart cart = cartDAO.add(book, quantity);
         request.setAttribute("listCart",cart);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
