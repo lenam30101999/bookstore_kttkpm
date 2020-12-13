@@ -21,4 +21,15 @@
         <servlet-name>itemServlet</servlet-name>
         <url-pattern>/list</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.linh.pttkht2.controller.servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/listCart</url-pattern>
+        <url-pattern>/payment</url-pattern>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -2,11 +2,13 @@ package com.linh.pttkht2.controller.impl;
 
 import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.model.Cart;
+import com.linh.pttkht2.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartDAOImpl extends ConnectionDAO implements CartDAO {
-
+	public List<Cart> carts = new ArrayList<>();
 	public void add(Cart c) {
 		// TODO - implement CartDAOImpl.add
 		throw new UnsupportedOperationException();
@@ -14,7 +16,9 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 
 	public List<Cart> get() {
 		// TODO - implement CartDAOImpl.get
-		throw new UnsupportedOperationException();
+		carts.add(new Cart(1, 5,null,null,null ));
+		carts.add(new Cart(2, 10,null,null,null ));
+		return carts;
 	}
 
 	public Cart get(int id) {
@@ -29,7 +33,7 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 
 	public void delete(int id) {
 		// TODO - implement CartDAOImpl.delete
-		throw new UnsupportedOperationException();
+		carts.remove(id);
 	}
 
 }
