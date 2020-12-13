@@ -1,10 +1,12 @@
 package com.linh.pttkht2.controller.dao;
 
+import com.linh.pttkht2.model.Order;
+
 public interface OrderDAO {
 
 	void addOrder();
 
-	void getOrder();
+	Order getOrder();
 
 	void getAllOrder();
 

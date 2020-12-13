@@ -7,20 +7,18 @@ public class Book {
 	private int numPage;
 	private Publisher publisher;
 	private Author author;
-	private Item item;
 	private double price;
 
 	public Book() {
 	}
 
-	public Book(int bookID, String name, int numPage, Publisher publisher, Author author, Item item, double price) {
+	public Book(int bookID, String name, int numPage, Publisher publisher, Author author, double price) {
 		BookID = bookID;
 		this.name = name;
 		this.numPage = numPage;
 		this.publisher = publisher;
 		this.author = author;
-		this.item=item;
-		this.price=price;
+		this.price = price;
 	}
 
 	public int getBookID() {
@@ -63,19 +61,23 @@ public class Book {
 		this.author = author;
 	}
 
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
-	}
-
 	public double getPrice() {
 		return price;
 	}
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Book{" +
+				"BookID=" + BookID +
+				", name='" + name + '\'' +
+				", numPage=" + numPage +
+				", publisher=" + publisher +
+				", author=" + author +
+				", price=" + price +
+				'}';
 	}
 }

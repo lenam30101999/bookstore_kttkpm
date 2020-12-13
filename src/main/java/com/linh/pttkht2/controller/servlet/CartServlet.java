@@ -2,6 +2,7 @@ package com.linh.pttkht2.controller.servlet;
 
 import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.controller.impl.CartDAOImpl;
+import com.linh.pttkht2.model.Book;
 import com.linh.pttkht2.model.Cart;
 import com.linh.pttkht2.model.Item;
 
@@ -29,6 +30,9 @@ public class CartServlet extends HttpServlet {
 
         try {
             switch (action) {
+                case "/add":
+                    addToCart(request, response);
+                    break;
                 case "/listCart":
                     getListCart(request, response);
                     break;
@@ -43,20 +47,35 @@ public class CartServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response)
+        throws SQLException, IOException, ServletException {
+        Book book = new Book();
+//        int quantity = (int) request.getAttribute("quantity");
+        int quantity=1;
+        int id = Integer.parseInt(request.getParameter("id"));
+        book.setBookID(id);
+        cartDAO.add(book, quantity);
+        response.sendRedirect("list");
+    }
+
     private void getListCart(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Cart> carts = cartDAO.get();
-        request.setAttribute("listCart",carts);
+        Cart carts = cartDAO.get();
+        List<Item> item=carts.getItems();
+        request.setAttribute("listCart",item);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
         dispatcher.forward(request, response);
     }
+
     private void getListCartPayment(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Cart> carts = cartDAO.get();
+        Cart carts = cartDAO.get();
         request.setAttribute("payment",carts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
         dispatcher.forward(request, response);
     }
+
     private void deleteCart(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));

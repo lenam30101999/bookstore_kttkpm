@@ -12,6 +12,10 @@ import java.util.List;
 
 public class BookDAOImpl extends ConnectionDAO implements BookDAO {
 
+	private String SEARCH_BOOK = "select book.BookID, book.Name AS book_name, book.NumPage, author.Name AS author_name, " +
+			"publisher.Name AS publisher_name from book,author,publisher where author.authorID = book.AuthorAuthorID " +
+			"and book.publisherPubID = publisher.PubID and book.BookID=?";
+
 	public void addBook() {
 		// TODO - implement BookDAOImpl.addBook
 		throw new UnsupportedOperationException();
