@@ -11,7 +11,7 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 
 	private static final String check = "select * from Customer where username = ? and password = ?";
 	public Customer checkLogin(Customer customerCheck) {
-		Customer customer = new Customer();
+		Customer customer = null;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(check);
 			preparedStatement.setString(1, customerCheck.getUsername());
