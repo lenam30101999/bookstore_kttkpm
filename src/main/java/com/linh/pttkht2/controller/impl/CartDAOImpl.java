@@ -1,6 +1,7 @@
 package com.linh.pttkht2.controller.impl;
 
 import com.linh.pttkht2.controller.dao.CartDAO;
+import com.linh.pttkht2.model.Book;
 import com.linh.pttkht2.model.Cart;
 import com.linh.pttkht2.model.Customer;
 import com.linh.pttkht2.model.Item;
@@ -14,23 +15,27 @@ import java.util.List;
 public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 	Cart cart = new Cart();
 
-	public Cart add(Item c) {
-		String SEARCH_ITEM = "SELECT ItemID, Name, Quantity FROM Item WHERE ItemID = ?";
+	public Cart add(Book book, int quantity) {
+		String SEARCH_BOOK = "SELECT BookID, Name, NumPage FROM pttkht_btl.Book WHERE BookID = ?";
 		Item item = new Item();
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_ITEM);
-			preparedStatement.setInt(1, c.getItemID());
+			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BOOK);
+			preparedStatement.setInt(1, book.getBookID());
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				item.setItemID(rs.getInt("ItemID"));
-				item.setName(rs.getString("Name"));
-				item.setQuantity(rs.getInt("Quantity"));
+				book.setBookID(rs.getInt("ItemID"));
+				book.setName(rs.getString("Name"));
+				book.setNumPage(rs.getInt("NumPage"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		if (c != null && item.getQuantity() >= 0){
+		if (book != null && item.getQuantity() > 0){
+			item.setBook(book);
+			item.setName(book.getName());
+			item.setQuantity(quantity);
+
 			List<Item> items = cart.getItems();
 			items.add(item);
 
