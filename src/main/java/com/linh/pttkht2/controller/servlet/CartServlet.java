@@ -51,7 +51,6 @@ public class CartServlet extends HttpServlet {
         throws SQLException, IOException, ServletException {
         Item item = new Item();
 
-
         Cart cart = cartDAO.add(item);
         request.setAttribute("listCart",cart);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
@@ -61,7 +60,8 @@ public class CartServlet extends HttpServlet {
     private void getListCart(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         Cart carts = cartDAO.get();
-        request.setAttribute("listCart",carts);
+        List<Item> item=carts.getItems();
+        request.setAttribute("listCart",item);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
         dispatcher.forward(request, response);
     }

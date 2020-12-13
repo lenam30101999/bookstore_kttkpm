@@ -42,8 +42,7 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 
 	@Override
 	public void save(Cart cart) {
-		String sql = "INSERT INTO `pttkht_btl`.`Cart` (totalQuantity`) " +
-				"VALUES (?)";
+		String sql = "INSERT INTO pttkht_btl.Cart(totalQuantity) VALUES (?)";
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);

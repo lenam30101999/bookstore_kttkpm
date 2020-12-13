@@ -32,16 +32,15 @@
     <div class="container">
         <h3 class="text-center">ORDER</h3>
         <hr>
-        <div class="container text-left">
-
-            <a href="<%=request.getContextPath()%>/order.jsp" class="btn btn-success">My Order</a>
-        </div>
         <br>
         <ul class="list-group">
             <li class="list-group-item active">Order Information</li>
-            <li class="list-group-item">Order ID: <s:property value="userName" /></li>
+            <li class="list-group-item">Order ID: <%= ((Customer) session.getAttribute("customer")).getLastName() %></li>
             <li class="list-group-item">Date: </li>
-            <li class="list-group-item">Customer: </li>
+            <li class="list-group-item">Customer: <%= ((Customer) session.getAttribute("customer")).getLastName() %>
+                <%= ((Customer) session.getAttribute("customer")).getMiddleName() %>
+                <%= ((Customer) session.getAttribute("customer")).getFirstName() %>
+            </li>
             <li class="list-group-item">Ship: </li>
             <li class="list-group-item">Total money: </li>
         </ul>
