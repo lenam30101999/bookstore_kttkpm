@@ -1,3 +1,4 @@
+<%@ page import="com.linh.pttkht2.model.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -29,14 +30,29 @@
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
     <div class="container">
-        <h3 class="text-center">CART</h3>
+        <h3 class="text-center">ORDER</h3>
         <hr>
+        <div class="container text-left">
+
+            <a href="<%=request.getContextPath()%>/order.jsp" class="btn btn-success">My Order</a>
+        </div>
+        <br>
+        <ul class="list-group">
+            <li class="list-group-item active">Order Information</li>
+            <li class="list-group-item">Order ID: <s:property value="userName" /></li>
+            <li class="list-group-item">Date: </li>
+            <li class="list-group-item">Customer: </li>
+            <li class="list-group-item">Ship: </li>
+            <li class="list-group-item">Total money: </li>
+        </ul>
         <br>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
             </tr>
             </thead>
 
@@ -46,6 +62,7 @@
                 <tr>
                     <td><c:out value="${cart.cartID}" /></td>
                     <td><c:out value="${cart.quantity}" /></td>
+                    <td><a href="delete?id=<c:out value='${cart.cartID}' />" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 

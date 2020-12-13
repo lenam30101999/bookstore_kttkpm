@@ -55,7 +55,7 @@ public class CustomerServlet extends HttpServlet {
         customer=customerDAO.checkLogin(customer);
         if (customer!=null) {
             HttpSession session = request.getSession(false);
-            session.setAttribute("customerId", customer.getCustID());
+            session.setAttribute("customer", customer);
             response.sendRedirect("list");
             return;
         }
