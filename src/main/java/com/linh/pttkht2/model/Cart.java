@@ -55,4 +55,15 @@ public class Cart {
 	public void setItem(Item item) {
 		this.item = item;
 	}
+
+	@Override
+	public String toString() {
+		return "Cart{" +
+				"cartID=" + cartID +
+				", quantity=" + quantity +
+				", payMent=" + payMent +
+				", shipMent=" + shipMent +
+				", item=" + item +
+				'}';
+	}
 }

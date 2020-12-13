@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class ConnectionDAO {
     protected String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
-    protected String jdbcUsername = "root";
-    protected String jdbcPassword = "123456";
+    protected String jdbcUsername = System.getenv("DB_USERNAME");
+    protected String jdbcPassword = System.getenv("DB_PASSWORD");
     public static Connection connection;
 
     public ConnectionDAO(){
