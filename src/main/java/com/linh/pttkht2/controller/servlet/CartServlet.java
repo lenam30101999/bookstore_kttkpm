@@ -71,7 +71,8 @@ public class CartServlet extends HttpServlet {
     private void getListCartPayment(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         Cart carts = cartDAO.get();
-        request.setAttribute("payment",carts);
+        List<Item> item=carts.getItems();
+        request.setAttribute("payment",item);
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
         dispatcher.forward(request, response);
     }
