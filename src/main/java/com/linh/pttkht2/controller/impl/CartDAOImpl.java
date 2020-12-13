@@ -15,6 +15,7 @@ import java.util.Objects;
 
 public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 	Cart cart = new Cart();
+	int id;
 
 	public Cart add(Book book, int quantity) {
 		String SEARCH_BOOK = "SELECT BookID, Name, NumPage, Price FROM pttkht_btl.Book WHERE BookID = ?";
@@ -34,18 +35,21 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 		}
 
 		if (book != null && quantity > 0){
-			System.out.println(book.toString());
-			item.setBook(book);
-			item.setName(book.getName());
-			item.setQuantity(quantity);
-
 			List<Item> items = cart.getItems();
 
 			if (Objects.isNull(items)){
 				items = new ArrayList<>();
 			}
-			System.out.println(item.toString());
-			items.add(item);
+
+			item.setItemID(id);
+			item.setBook(book);
+			item.setName(book.getName());
+			item.setQuantity(quantity);
+
+			if (checkExist(item, items)){
+				items.add(item);
+				id++;
+			}
 
 			cart.setTotalQuantity(cart.getTotalQuantity() + item.getQuantity());
 			cart.setItems(items);
@@ -85,8 +89,20 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 
 	public void delete(int id) {
 		List<Item> items = cart.getItems();
-		items.remove(id);
+		items.removeIf(item -> item.getItemID() == id);
 		cart.setItems(items);
 	}
 
+	private boolean checkExist(Item item, List<Item> items){
+		if (items != null){
+			for (int i = 0; i < items.size(); i++){
+				if (items.get(i).getName().equals(item.getName())){
+					items.get(i).setQuantity(items.get(i).getQuantity() + 1);
+					items.set(i, items.get(i));
+					return false;
+				}
+			}
+			return true;
+		}else return true;
+	}
 }

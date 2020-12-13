@@ -11,34 +11,68 @@
 <jsp:useBean id="book" scope="request" class="com.linh.pttkht2.model.Book"></jsp:useBean>
 <jsp:setProperty name="book" property="*"></jsp:setProperty>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-    <title>Hello</title>
+    <title>cart</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
 <body>
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>Information Book</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>Number Page</th>
-            <th>Price</th>
-            <%--            <th>Price</th>--%>
-<%--            <th>Actions</th>--%>
-<%--            <th>Shopping</th>--%>
-        </tr>
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark"
+         style="background-color: black">
+        <div>
+            <a href="" class="navbar-brand">INFORMATION BOOK </a>
+        </div>
+
+        <ul class="navbar-nav">
+            <li><a href="<%=request.getContextPath()%>/list"
+                   class="nav-link">BOOK LIST</a></li>
+        </ul>
+    </nav>
+</header>
+<br>
+
+<div class="row">
+    <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
+
+    <div class="container">
+        <h3 class="text-center">INFORMATION BOOK</h3>
+        <hr>
+        <br>
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td><%= ((Book) request.getAttribute("infobook")).getBookID() %></td>
-                <td><%= ((Book) request.getAttribute("infobook")).getName() %></td>
-                <td><%= ((Book) request.getAttribute("infobook")).getAuthor().getName() %></td>
-                <td><%= ((Book) request.getAttribute("infobook")).getPublisher().getName() %></td>
-                <td><%= ((Book) request.getAttribute("infobook")).getNumPage() %></td>
-                <td><%= ((Book) request.getAttribute("infobook")).getPrice() %></td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Number Page</th>
+                <th>Price</th>
             </tr>
-    </table>
+            </thead>
+            <!--   for (Todo todo: todos) {  -->
+                <tbody>
+                <tr>
+                    <td><%= ((Book) request.getAttribute("infobook")).getBookID() %></td>
+                    <td><%= ((Book) request.getAttribute("infobook")).getName() %></td>
+                    <td><%= ((Book) request.getAttribute("infobook")).getAuthor().getName() %></td>
+                    <td><%= ((Book) request.getAttribute("infobook")).getPublisher().getName() %></td>
+                    <td><%= ((Book) request.getAttribute("infobook")).getNumPage() %></td>
+                    <td><%= ((Book) request.getAttribute("infobook")).getPrice() %></td>
+                </tr>
+
+                <!-- } -->
+                </tbody>
+        </table>
+        <div class="container text-right">
+            <a href="<%=request.getContextPath()%>/list" class="btn btn-info">Back</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

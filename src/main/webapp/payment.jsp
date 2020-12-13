@@ -36,20 +36,23 @@
     <div class="container">
         <h3 class="text-center">Payment</h3>
         <hr>
+        <%! int i=1;%>;
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Book Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
             </tr>
             </thead>
 
             <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="cart" items="${payment}">
+            <c:forEach var="item" items="${payment}">
                 <tbody>
                 <tr>
-                    <td><c:out value="${cart.cartID}" /></td>
-                    <td><c:out value="${cart.quantity}" /></td>
+                    <td><c:out value="${item.name}" /></td>
+                    <td><c:out value="${item.quantity}" /></td>
+                    <td><c:out value="${item.book.price}" /></td>
                     </td>
                 </tr>
 
@@ -79,7 +82,7 @@
     </div>
     <br>
     <div class="container text-right">
-        <a href="<%=request.getContextPath()%>/order.jsp" class="btn btn-info">Order</a>
+        <a href="<%=request.getContextPath()%>/order" class="btn btn-info">Order</a>
 
     </div>
 </div>

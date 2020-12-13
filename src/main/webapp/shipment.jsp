@@ -30,11 +30,6 @@
     <div class="container">
         <h3 class="text-center">Shipment</h3>
         <hr>
-        <div class="container text-left">
-
-            <a href="<%=request.getContextPath()%>/" class="btn btn-success">Add
-                New Shipment</a>
-        </div>
         <br>
         <table class="table table-bordered">
             <thead>
