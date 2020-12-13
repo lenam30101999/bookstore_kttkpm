@@ -9,24 +9,9 @@ import java.sql.*;
 
 public class BookDAOImpl extends ConnectionDAO implements BookDAO {
 
-	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
-	private String jdbcUsername = "root";
-	private String jdbcPassword = "phamlong4101999";
-
-	protected Connection getConnection() {
-		Connection connection = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return connection;
-	}
+	private String SEARCH_BOOK = "select book.BookID, book.Name AS book_name, book.NumPage, author.Name AS author_name, " +
+			"publisher.Name AS publisher_name from book,author,publisher where author.authorID = book.AuthorAuthorID " +
+			"and book.publisherPubID = publisher.PubID; and book.BookID=?";
 
 	public void addBook() {
 		// TODO - implement BookDAOImpl.addBook
@@ -39,14 +24,10 @@ public class BookDAOImpl extends ConnectionDAO implements BookDAO {
 		Book dbBook = new Book();
 		dbBook.setBookID(book.getBookID());
 		try {
-			Connection connection = getConnection();
-			String strQuery = "select book.BookID, book.Name AS book_name, book.NumPage, author.Name AS author_name, " +
-					"publisher.Name AS publisher_name from book,author,publisher where author.authorID = book.AuthorAuthorID " +
-					"and book.publisherPubID = publisher.PubID; and book.BookID=?";
-			PreparedStatement preparedStatement = connection.prepareStatement(strQuery);
+			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BOOK);
 			preparedStatement.setInt(1,book.getBookID());
-			rs = stmt.executeQuery(strQuery);
-			System.out.println(strQuery);
+			rs = stmt.executeQuery(SEARCH_BOOK);
+			System.out.println(SEARCH_BOOK);
 
 			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
