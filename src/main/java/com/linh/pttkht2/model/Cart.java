@@ -1,19 +1,23 @@
 package com.linh.pttkht2.model;
 
+import java.util.List;
+
 public class Cart {
-
 	private int cartID;
-	private int quantity;
-	private Payment payMent;
-	private Shipment shipMent;
-	private Item item;
+	private int totalQuantity;
+	private Payment payment;
+	private Shipment shipment;
+	private List<Item> items;
 
-	public Cart(int cartID, int quantity, Payment payMent, Shipment shipMent, Item item) {
+	public Cart() {
+	}
+
+	public Cart(int cartID, int totalQuantity, Payment payment, Shipment shipment, List<Item> items) {
 		this.cartID = cartID;
-		this.quantity = quantity;
-		this.payMent = payMent;
-		this.shipMent = shipMent;
-		this.item = item;
+		this.totalQuantity = totalQuantity;
+		this.payment = payment;
+		this.shipment = shipment;
+		this.items = items;
 	}
 
 	public int getCartID() {
@@ -24,46 +28,46 @@ public class Cart {
 		this.cartID = cartID;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public int getTotalQuantity() {
+		return totalQuantity;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
 	}
 
-	public Payment getPayMent() {
-		return payMent;
+	public Payment getPayment() {
+		return payment;
 	}
 
-	public void setPayMent(Payment payMent) {
-		this.payMent = payMent;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
-	public Shipment getShipMent() {
-		return shipMent;
+	public Shipment getShipment() {
+		return shipment;
 	}
 
-	public void setShipMent(Shipment shipMent) {
-		this.shipMent = shipMent;
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
 	}
 
-	public Item getItem() {
-		return item;
+	public List<Item> getItems() {
+		return items;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 	@Override
 	public String toString() {
 		return "Cart{" +
 				"cartID=" + cartID +
-				", quantity=" + quantity +
-				", payMent=" + payMent +
-				", shipMent=" + shipMent +
-				", item=" + item +
+				", totalQuantity=" + totalQuantity +
+				", payment=" + payment +
+				", shipment=" + shipment +
+				", items=" + items +
 				'}';
 	}
 }

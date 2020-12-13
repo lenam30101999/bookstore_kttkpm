@@ -29,6 +29,9 @@ public class CartServlet extends HttpServlet {
 
         try {
             switch (action) {
+                case "/add":
+                    addToCart(request, response);
+                    break;
                 case "/listCart":
                     getListCart(request, response);
                     break;
@@ -43,20 +46,34 @@ public class CartServlet extends HttpServlet {
             throw new ServletException(ex);
         }
     }
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response)
+        throws SQLException, IOException, ServletException {
+        Item item = new Item();
+
+
+        Cart cart = cartDAO.add(item);
+        request.setAttribute("listCart",cart);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private void getListCart(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Cart> carts = cartDAO.get();
+        Cart carts = cartDAO.get();
         request.setAttribute("listCart",carts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
         dispatcher.forward(request, response);
     }
+
     private void getListCartPayment(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Cart> carts = cartDAO.get();
+        Cart carts = cartDAO.get();
         request.setAttribute("payment",carts);
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
         dispatcher.forward(request, response);
     }
+
     private void deleteCart(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
