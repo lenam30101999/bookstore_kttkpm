@@ -12,21 +12,6 @@ public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
 
 	private static final String SEARCH = "select * from Account where username = ? and password = ?";
 
-	protected Connection getConnection() {
-		Connection connection = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return connection;
-	}
-
 	public void addAuthor(Author a) {
 		// TODO - implement AuthorDAOImpl.addAuthor
 		throw new UnsupportedOperationException();
@@ -40,13 +25,10 @@ public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
 	public Author getAuthor(Author author) {
 		Statement stmt = null;
 		ResultSet rs = null;
-		Connection conn = null;
 
 		try {
-			conn = getConnection();
-
-			if(conn != null) {
-				stmt = conn.createStatement();
+			if(connection != null) {
+				stmt = connection.createStatement();
 				String strQuery = "select authorID, Name "
 						+ "from author where author.authorID = book.AuthorAuthorID";
 				rs = stmt.executeQuery(strQuery);

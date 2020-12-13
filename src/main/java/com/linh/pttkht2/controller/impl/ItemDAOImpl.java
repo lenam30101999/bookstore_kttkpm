@@ -12,25 +12,6 @@ import java.util.List;
 
 public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 
-	private String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
-	private String jdbcUsername = "root";
-	private String jdbcPassword = "phamlong4101999";
-
-	protected Connection getConnection() {
-		Connection connection = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return connection;
-	}
-
 	public void addItem(Item i) {
 		// TODO - implement ItemDAOImpl.addItem
 		throw new UnsupportedOperationException();
@@ -41,7 +22,6 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 		List<Item> items = new ArrayList<>();
 		ResultSet rs = null;
 		try {
-			Connection connection = getConnection();
 			String strQuery = "select BookID, book.name AS book_name, book.price from book";
 			PreparedStatement preparedStatement = connection.prepareStatement(strQuery);
 			rs = preparedStatement.executeQuery(strQuery);
