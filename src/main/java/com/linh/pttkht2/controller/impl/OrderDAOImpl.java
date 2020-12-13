@@ -1,6 +1,8 @@
 package com.linh.pttkht2.controller.impl;
 
+import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.controller.dao.OrderDAO;
+import com.linh.pttkht2.model.Cart;
 import com.linh.pttkht2.model.Item;
 import com.linh.pttkht2.model.Order;
 
@@ -25,7 +27,7 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
         //TODO: Get customerId
         int customerId = order.getCustomer().getCustID();
 
-        String shipmentInsertSql = "INSERT INTO Shipment VALUES (null, 10000.0, null)";
+        String shipmentInsertSql = "INSERT INTO Shipment VALUES (null, 10000.0)";
         Statement statement = connection.createStatement();
         statement.execute(shipmentInsertSql, Statement.RETURN_GENERATED_KEYS);
 
@@ -35,9 +37,23 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
             shipmentKey = generatedKeys.getInt(1);
         }
 
+//        CartDAO cartDAO=new CartDAOImpl();
+//        Cart carts = cartDAO.get();
+//
+//        int total = 0;
+//        List<Item> items=carts.getItems();
+//        for (int i=0;i<items.size();i++){
+//            total=total+items.get(i).getQuantity();
+//        }
+//        Cart cart=new Cart();
+//        cart.setTotalQuantity(total);
+//        cartDAO.save(cart);
+
+
         long currentDate = new java.util.Date().getTime();
 
-		String orderInsertSql = "INSERT INTO `Order` VALUES (null, ?, ?, ?, ?, ?)";
+		String orderInsertSql = "INSERT INTO `pttkht_btl`.`order` (`PaymentID`, `CustomerID`, `ShipmentID`, `Date`, `Price`) " +
+                "VALUES (?,?,?,?,?);";
         psmt = connection.prepareStatement(orderInsertSql);
         psmt.setInt(1, paymentKey);
         psmt.setInt(2, customerId);
@@ -45,6 +61,8 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
         psmt.setDate(4, new Date(currentDate));
         psmt.setDouble(5, order.getPrice());
         psmt.execute();
+
+
     }
 
     public Order getOrder() {

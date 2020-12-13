@@ -40,6 +40,9 @@ public class CartServlet extends HttpServlet {
                 case "/payment":
                     getListCartPayment(request, response);
                     break;
+                case "/orderList":
+                    getListOrder(request, response);
+                    break;
                 case "/delete":
                     deleteCart(request, response);
                     break;
