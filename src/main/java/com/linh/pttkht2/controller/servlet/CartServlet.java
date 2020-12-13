@@ -2,6 +2,7 @@ package com.linh.pttkht2.controller.servlet;
 
 import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.controller.impl.CartDAOImpl;
+import com.linh.pttkht2.model.Book;
 import com.linh.pttkht2.model.Cart;
 import com.linh.pttkht2.model.Item;
 
@@ -49,9 +50,11 @@ public class CartServlet extends HttpServlet {
 
     private void addToCart(HttpServletRequest request, HttpServletResponse response)
         throws SQLException, IOException, ServletException {
-        Item item = new Item();
+        Book book = new Book();
+        int quantity = (int) request.getAttribute("quantity");
 
-        Cart cart = cartDAO.add(item);
+
+        Cart cart = cartDAO.add(book, quantity);
         request.setAttribute("listCart",cart);
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
         dispatcher.forward(request, response);

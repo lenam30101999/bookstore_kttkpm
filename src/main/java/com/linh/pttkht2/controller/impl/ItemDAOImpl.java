@@ -36,7 +36,6 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 				Item item =new Item();
 				item.setItemID(bookId);
 				item.setName(name);
-				item.setPrice(price);
 
 				items.add(item);
 			}
