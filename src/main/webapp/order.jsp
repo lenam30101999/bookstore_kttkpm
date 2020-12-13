@@ -30,7 +30,8 @@
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
     <div class="container">
-        <h3 class="text-center">ORDER SUCCESS</h3>
+        <h3 class="text-center">ORDER SUCCESS!</h3>
+        <a href="<%=request.getContextPath()%>/list" class="nav-link text-center">Back to list</a>
     </div>
 </div>
 </body>

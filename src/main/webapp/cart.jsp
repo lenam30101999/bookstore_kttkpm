@@ -34,15 +34,16 @@
         <div class="container text-left">
 
             <a href="<%=request.getContextPath()%>/list" class="btn btn-success">Add
-                New Cart</a>
+                New Book</a>
         </div>
         <br>
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>Book Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
             </tr>
             </thead>
 
@@ -50,7 +51,6 @@
             <c:forEach var="item" items="${listCart}">
                 <tbody>
                 <tr>
-                    <td><c:out value="${item.itemID}" /></td>
                     <td><c:out value="${item.name}" /></td>
                     <td><c:out value="${item.quantity}" /></td>
                     <td><c:out value="${item.book.price}" /></td>

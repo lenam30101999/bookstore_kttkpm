@@ -1,4 +1,5 @@
 <%@ page import="com.linh.pttkht2.model.Shipment" %>
+<%@ page import="com.linh.pttkht2.model.Shipment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -37,12 +38,13 @@
     <div class="container">
         <h3 class="text-center">Payment</h3>
         <hr>
+        <%! int i=1;%>;
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Name</th>
+                <th>Book Name</th>
                 <th>Quantity</th>
-                <th>Total price</th>
+                <th>Price</th>
             </tr>
             </thead>
 

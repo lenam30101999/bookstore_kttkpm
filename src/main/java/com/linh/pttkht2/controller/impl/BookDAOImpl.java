@@ -27,7 +27,7 @@ public class BookDAOImpl extends ConnectionDAO implements BookDAO {
         Book dbBook = new Book();
         dbBook.setBookID(book.getBookID());
         try {
-            String SEARCH_BOOK = "select Book.BookID, Book.Name AS book_name, Book.NumPage, Book.price, author.Name AS author_name, publisher.Name AS publisher_name from Book,author,publisher where author.authorID = Book.AuthorID and Book.publisherID = publisher.PubID and Book.BookID=" + bookID;
+            String SEARCH_BOOK = "select Book.BookID, Book.Name AS book_name, Book.NumPage, Book.price, Author.Name AS author_name, publisher.Name AS publisher_name from Book,Author,publisher where Author.authorID = Book.AuthorID and Book.publisherID = publisher.PubID and Book.BookID=" + bookID;
             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BOOK);
             rs = preparedStatement.executeQuery(SEARCH_BOOK);
             System.out.println(SEARCH_BOOK);

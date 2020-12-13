@@ -1,5 +1,7 @@
 package com.linh.pttkht2.model;
 
+import java.util.Objects;
+
 public class Item {
 
 	private int itemID;
@@ -47,6 +49,22 @@ public class Item {
 
 	public void setBook(Book book) {
 		this.book = book;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Item item = (Item) o;
+		return itemID == item.itemID &&
+				quantity == item.quantity &&
+				Objects.equals(name, item.name) &&
+				Objects.equals(book, item.book);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(itemID, name, quantity, book);
 	}
 
 	@Override

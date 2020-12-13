@@ -29,39 +29,48 @@
     </nav>
 </header>
 <br>
-
+<div class="container text-right">
+   HELLO: <%= ((Customer) session.getAttribute("customer")).getLastName() %>
+    <%= ((Customer) session.getAttribute("customer")).getMiddleName() %>
+    <%= ((Customer) session.getAttribute("customer")).getFirstName() %>
+</div>
+<br>
 <div class="row">
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
-    </h2>
-</center>
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Books</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-<%--            <th>Price</th>--%>
-            <th>Actions</th>
-            <th>Shopping</th>
-        </tr>
-        <c:forEach var="book" items="${listBook}">
+    <div class="container">
+        <h3 class="text-center">BOOK LIST</h3>
+        <hr>
+        <br>
+        <table class="table table-bordered">
             <tr>
-                <td><c:out value="${book.bookID}" /></td>
-                <td><c:out value="${book.name}" /></td>
-                <td><c:out value="${book.price}" /></td>
-                <td>
-                    <a href="infobook?id=<c:out value='${book.bookID}'/>">Info Book</a>
-<%--                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
-<%--                    <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>--%>
-                </td>
-                <td>
-                    <a href="add?id=<c:out value='${book.bookID}'/>">Add to cart</a>
-                </td>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <%--            <th>Price</th>--%>
+                <th>Actions</th>
+                <th>Shopping</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach var="book" items="${listBook}">
+                <tr>
+                    <td><c:out value="${book.bookID}" /></td>
+                    <td><c:out value="${book.name}" /></td>
+                    <td><c:out value="${book.price}" /></td>
+                    <td>
+                        <a href="infobook?id=<c:out value='${book.bookID}'/>" class="btn btn-secondary">Info Book</a>
+                            <%--                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
+                            <%--                    <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>--%>
+                    </td>
+                    <td>
+                        <a href="add?id=<c:out value='${book.bookID}'/>" class="btn btn-info">Add to cart</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+        <div class="container text-right">
+            <a href="<%=request.getContextPath()%>/listCart" class="btn btn-info">View Cart</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

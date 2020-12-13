@@ -56,6 +56,7 @@ public class OrderServlet extends HttpServlet {
 
         orderDAO.addOrder(order);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
+        session.removeAttribute("order");
         dispatcher.forward(request, response);
     }
 }
