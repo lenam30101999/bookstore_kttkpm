@@ -1,14 +1,17 @@
 package com.linh.pttkht2.controller.dao;
 
 import com.linh.pttkht2.model.Cart;
+import com.linh.pttkht2.model.Item;
 
 import java.util.List;
 
 public interface CartDAO {
 
-	void add(Cart c);
+	Cart add(Item c);
 
-	List<Cart> get();
+	void save(Cart cart);
+
+	Cart get();
 
 	Cart get(int id);
 

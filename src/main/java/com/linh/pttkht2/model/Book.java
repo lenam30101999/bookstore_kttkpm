@@ -7,20 +7,18 @@ public class Book {
 	private int numPage;
 	private Publisher publisher;
 	private Author author;
-	private Item item;
 	private double price;
 
 	public Book() {
 	}
 
-	public Book(int bookID, String name, int numPage, Publisher publisher, Author author, Item item, double price) {
+	public Book(int bookID, String name, int numPage, Publisher publisher, Author author, double price) {
 		BookID = bookID;
 		this.name = name;
 		this.numPage = numPage;
 		this.publisher = publisher;
 		this.author = author;
-		this.item=item;
-		this.price=price;
+		this.price = price;
 	}
 
 	public int getBookID() {
@@ -61,14 +59,6 @@ public class Book {
 
 	public void setAuthor(Author author) {
 		this.author = author;
-	}
-
-	public Item getItem() {
-		return item;
-	}
-
-	public void setItem(Item item) {
-		this.item = item;
 	}
 
 	public double getPrice() {
