@@ -10,14 +10,16 @@ public class Order {
 	private Cart cart;
 	private Customer customer;
 	private Payment payment;
+	private Shipment shipment;
 
-	public Order(int orderID, Date date, double price, Cart cart, Customer customer, Payment payment) {
+	public Order(int orderID, Date date, double price, Cart cart, Customer customer, Payment payment, Shipment shipment) {
 		this.orderID = orderID;
 		this.date = date;
 		this.price = price;
 		this.cart = cart;
 		this.customer = customer;
 		this.payment = payment;
+		this.shipment = shipment;
 	}
 
 	public int getOrderID() {
@@ -66,5 +68,13 @@ public class Order {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	public Shipment getShipment() {
+		return shipment;
+	}
+
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
 	}
 }

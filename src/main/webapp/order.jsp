@@ -30,45 +30,7 @@
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
     <div class="container">
-        <h3 class="text-center">ORDER</h3>
-        <hr>
-        <br>
-        <ul class="list-group">
-            <li class="list-group-item active">Order Information</li>
-            <li class="list-group-item">Order ID: <%= ((Customer) session.getAttribute("customer")).getLastName() %></li>
-            <li class="list-group-item">Date: </li>
-            <li class="list-group-item">Customer: <%= ((Customer) session.getAttribute("customer")).getLastName() %>
-                <%= ((Customer) session.getAttribute("customer")).getMiddleName() %>
-                <%= ((Customer) session.getAttribute("customer")).getFirstName() %>
-            </li>
-            <li class="list-group-item">Ship: </li>
-            <li class="list-group-item">Total money: </li>
-        </ul>
-        <br>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-            </thead>
-
-            <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="cart" items="${listCart}">
-                <tbody>
-                <tr>
-                    <td><c:out value="${cart.cartID}" /></td>
-                    <td><c:out value="${cart.quantity}" /></td>
-                    <td><a href="delete?id=<c:out value='${cart.cartID}' />" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-
-                <!-- } -->
-                </tbody>
-            </c:forEach>
-        </table>
+        <h3 class="text-center">ORDER SUCCESS</h3>
     </div>
 </div>
 </body>

@@ -12,13 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class OrderServlet extends HttpServlet {
     private OrderDAO orderDAO =new OrderDAOImpl();
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,6 +34,9 @@ public class OrderServlet extends HttpServlet {
                 case "/getOrder":
                     getOrder(request, response);
                     break;
+                case "/order":
+                    submitOrder(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -43,6 +46,15 @@ public class OrderServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         Order orders = orderDAO.getOrder();
         request.setAttribute("order",orders);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void submitOrder(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Order order = (Order) session.getAttribute("order");
+
+        orderDAO.addOrder(order);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
         dispatcher.forward(request, response);
     }
