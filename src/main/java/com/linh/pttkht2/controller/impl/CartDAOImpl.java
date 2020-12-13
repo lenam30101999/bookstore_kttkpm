@@ -11,37 +11,46 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 	Cart cart = new Cart();
 
 	public Cart add(Book book, int quantity) {
-		String SEARCH_BOOK = "SELECT BookID, Name, NumPage FROM pttkht_btl.Book WHERE BookID = ?";
+		String SEARCH_BOOK = "SELECT BookID, Name, NumPage, Price FROM pttkht_btl.Book WHERE BookID = ?";
 		Item item = new Item();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BOOK);
 			preparedStatement.setInt(1, book.getBookID());
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				book.setBookID(rs.getInt("ItemID"));
+				book.setBookID(rs.getInt("BookID"));
 				book.setName(rs.getString("Name"));
 				book.setNumPage(rs.getInt("NumPage"));
+				book.setPrice(rs.getDouble("Price"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		if (book != null && item.getQuantity() > 0){
+		if (book != null && quantity > 0){
+			System.out.println(book.toString());
 			item.setBook(book);
 			item.setName(book.getName());
 			item.setQuantity(quantity);
 
 			List<Item> items = cart.getItems();
+
+			if (Objects.isNull(items)){
+				items = new ArrayList<>();
+			}
+			System.out.println(item.toString());
 			items.add(item);
 
 			cart.setTotalQuantity(cart.getTotalQuantity() + item.getQuantity());
 			cart.setItems(items);
 		}
+		System.out.println(cart.getItems().get(cart.getItems().size() - 1).toString());
 		return cart;
 	}
 

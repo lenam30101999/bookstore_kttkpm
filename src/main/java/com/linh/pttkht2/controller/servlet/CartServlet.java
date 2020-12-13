@@ -55,10 +55,8 @@ public class CartServlet extends HttpServlet {
         int quantity=1;
         int id = Integer.parseInt(request.getParameter("id"));
         book.setBookID(id);
-        Cart cart = cartDAO.add(book, quantity);
-        request.setAttribute("listCart",cart);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
-        dispatcher.forward(request, response);
+        cartDAO.add(book, quantity);
+        response.sendRedirect("list");
     }
 
     private void getListCart(HttpServletRequest request, HttpServletResponse response)

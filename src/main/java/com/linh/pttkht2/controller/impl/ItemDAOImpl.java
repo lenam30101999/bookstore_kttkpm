@@ -17,6 +17,7 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public List<Item> getItems() {
 		//TODO: Remove Test code
 		List<Item> items = new ArrayList<>();

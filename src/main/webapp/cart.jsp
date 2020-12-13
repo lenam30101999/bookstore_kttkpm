@@ -47,12 +47,14 @@
             </thead>
 
             <!--   for (Todo todo: todos) {  -->
-            <c:forEach var="cart" items="${listCart}">
+            <c:forEach var="item" items="${listCart}">
                 <tbody>
                 <tr>
-                    <td><c:out value="${cart.cartID}" /></td>
-                    <td><c:out value="${cart.quantity}" /></td>
-                    <td><a href="delete?id=<c:out value='${cart.cartID}' />" class="btn btn-danger">Delete</a>
+                    <td><c:out value="${item.itemID}" /></td>
+                    <td><c:out value="${item.name}" /></td>
+                    <td><c:out value="${item.quantity}" /></td>
+                    <td><c:out value="${item.book.price}" /></td>
+                    <td><a href="delete?id=<c:out value='${item.itemID}' />" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 

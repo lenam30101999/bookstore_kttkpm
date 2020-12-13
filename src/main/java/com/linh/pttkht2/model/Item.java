@@ -48,4 +48,14 @@ public class Item {
 	public void setBook(Book book) {
 		this.book = book;
 	}
+
+	@Override
+	public String toString() {
+		return "Item{" +
+				"itemID=" + itemID +
+				", name='" + name + '\'' +
+				", quantity=" + quantity +
+				", book=" + book +
+				'}';
+	}
 }
