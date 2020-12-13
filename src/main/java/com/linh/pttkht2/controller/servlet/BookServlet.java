@@ -5,6 +5,7 @@ import com.linh.pttkht2.controller.dao.ItemDAO;
 import com.linh.pttkht2.controller.impl.BookDAOImpl;
 import com.linh.pttkht2.controller.impl.ItemDAOImpl;
 import com.linh.pttkht2.model.Book;
+import com.linh.pttkht2.model.Customer;
 import com.linh.pttkht2.model.Item;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,6 +28,8 @@ public class BookServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        checkAlreadyLoggedIn(request, response);
+
         String action = request.getServletPath();
 
         try {
@@ -60,5 +64,15 @@ public class BookServlet extends HttpServlet {
         request.setAttribute("infobook", book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("infobook.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void checkAlreadyLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Customer sessionCustomer = (Customer) session.getAttribute("customer");
+
+        if (sessionCustomer == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

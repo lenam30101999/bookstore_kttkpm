@@ -64,6 +64,8 @@ public class CustomerServlet extends HttpServlet {
     }
     private void insert(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+        checkAlreadyLoggedIn(request, response);
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String phoneNumber = request.getParameter("phoneNumber");
@@ -77,5 +79,15 @@ public class CustomerServlet extends HttpServlet {
         customerDAO.addCustomer(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void checkAlreadyLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Customer sessionCustomer = (Customer) session.getAttribute("customer");
+
+        if (sessionCustomer == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }

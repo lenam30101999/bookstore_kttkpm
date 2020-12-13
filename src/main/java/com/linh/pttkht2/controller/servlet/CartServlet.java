@@ -27,6 +27,8 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getServletPath();
 
+        checkAlreadyLoggedIn(request, response);
+
         try {
             switch (action) {
                 case "/add":
@@ -99,4 +101,13 @@ public class CartServlet extends HttpServlet {
         response.sendRedirect("listCart");
     }
 
+    private void checkAlreadyLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Customer sessionCustomer = (Customer) session.getAttribute("customer");
+
+        if (sessionCustomer == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
 }

@@ -5,6 +5,7 @@ import com.linh.pttkht2.controller.dao.OrderDAO;
 import com.linh.pttkht2.controller.impl.CartDAOImpl;
 import com.linh.pttkht2.controller.impl.OrderDAOImpl;
 import com.linh.pttkht2.model.Cart;
+import com.linh.pttkht2.model.Customer;
 import com.linh.pttkht2.model.Order;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,8 @@ public class OrderServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        checkAlreadyLoggedIn(request, response);
+
         String action = request.getServletPath();
 
         try {
@@ -58,5 +61,15 @@ public class OrderServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
         session.removeAttribute("order");
         dispatcher.forward(request, response);
+    }
+
+    private void checkAlreadyLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Customer sessionCustomer = (Customer) session.getAttribute("customer");
+
+        if (sessionCustomer == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 }
