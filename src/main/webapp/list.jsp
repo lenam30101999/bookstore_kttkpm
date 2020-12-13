@@ -28,18 +28,18 @@
             <th>Actions</th>
             <th>Shopping</th>
         </tr>
-        <c:forEach var="item" items="${listBook}">
+        <c:forEach var="book" items="${listBook}">
             <tr>
-                <td><c:out value="${item.itemID}" /></td>
-                <td><c:out value="${item.name}" /></td>
-                <td><c:out value="${item.price}" /></td>
+                <td><c:out value="${book.bookID}" /></td>
+                <td><c:out value="${book.name}" /></td>
+                <td><c:out value="${book.price}" /></td>
                 <td>
-                    <a href="/infobook?id=<c:out value='${book.id}'/>">Info Book</a>
+                    <a href="infobook?id=<c:out value='${book.bookID}'/>">Info Book</a>
 <%--                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
 <%--                    <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>--%>
                 </td>
                 <td>
-                    <a href="/edit?id=<c:out value='${book.itemID}'/>">Add to cart</a>
+                    <a href="edit?id=<c:out value='${book.bookID}'/>">Add to cart</a>
                 </td>
             </tr>
         </c:forEach>

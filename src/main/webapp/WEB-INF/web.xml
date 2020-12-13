@@ -14,12 +14,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>itemServlet</servlet-name>
-        <servlet-class>com.linh.pttkht2.controller.servlet.ItemServlet</servlet-class>
+        <servlet-name>bookServlet</servlet-name>
+        <servlet-class>com.linh.pttkht2.controller.servlet.BookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>itemServlet</servlet-name>
+        <servlet-name>bookServlet</servlet-name>
         <url-pattern>/list</url-pattern>
+        <url-pattern>/infobook</url-pattern>
     </servlet-mapping>
 
     <servlet>
