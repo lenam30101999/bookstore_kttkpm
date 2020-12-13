@@ -31,7 +31,7 @@
 
     <div class="container">
         <div class="container text-right">
-            <a href="<%=request.getContextPath()%>/order.jsp" class="btn btn-info">My Order</a>
+            <a href="<%=request.getContextPath()%>/order" class="btn btn-info">My Order</a>
         </div>
         <hr>
         <br>

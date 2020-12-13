@@ -1,3 +1,4 @@
+<%@ page import="com.linh.pttkht2.model.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -30,17 +31,23 @@
     <div class="container">
         <h3 class="text-center">Shipment</h3>
         <hr>
+        <div class="container text-left">
+        </div>
         <br>
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Address</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Shipping price</th>
             </tr>
             </thead>
             <tbody>
-
+            <tr>
+                <td> <%= ((Customer) session.getAttribute("customer")).getStreet() %> </td>
+                <td><%= ((Customer) session.getAttribute("customer")).getCity() %></td>
+                <td>10000</td>
+            </tr>
             </tbody>
 
         </table>

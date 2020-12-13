@@ -1,3 +1,5 @@
+<%@ page import="com.linh.pttkht2.model.Shipment" %>
+<%@ page import="com.linh.pttkht2.model.Shipment" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -46,17 +48,15 @@
             </tr>
             </thead>
 
-            <!--   for (Todo todo: todos) {  -->
+            <jsp:useBean id="payment" scope="request" type="java.util.List"/>
             <c:forEach var="item" items="${payment}">
                 <tbody>
                 <tr>
-                    <td><c:out value="${item.name}" /></td>
-                    <td><c:out value="${item.quantity}" /></td>
-                    <td><c:out value="${item.book.price}" /></td>
+                    <td><c:out value="${item.name}"/></td>
+                    <td><c:out value="${item.quantity}"/></td>
+                    <td><c:out value="${item.book.price}"/></td>
                     </td>
                 </tr>
-
-                <!-- } -->
                 </tbody>
             </c:forEach>
         </table>
@@ -64,27 +64,27 @@
     </div>
 </div>
 
-    <div class="container text-right">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Book Price:
-                <span class="badge badge-primary badge-pill">10000VND</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Shipment:
-                <span class="badge badge-primary badge-pill">20000VND</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Total:
-                <span class="badge badge-primary badge-pill">120000VND</span>
-            </li>
-        </ul>
-    </div>
-    <br>
-    <div class="container text-right">
-        <a href="<%=request.getContextPath()%>/order" class="btn btn-info">Order</a>
+<div class="container text-right">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Book Price:
+            <span class="badge badge-primary badge-pill"><%= request.getAttribute("bookPrice") %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Shipment:
+            <span class="badge badge-primary badge-pill"><%= ((Shipment) request.getAttribute("shipment")).getPrice() %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Total:
+            <span class="badge badge-primary badge-pill"><%= request.getAttribute("totalPrice") %></span>
+        </li>
+    </ul>
+</div>
+<br>
+<div class="container text-right">
+    <a href="<%=request.getContextPath()%>/order" class="btn btn-info">Order</a>
 
-    </div>
+</div>
 </div>
 
 </body>

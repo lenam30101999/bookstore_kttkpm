@@ -2,15 +2,14 @@ package com.linh.pttkht2.controller.servlet;
 
 import com.linh.pttkht2.controller.dao.CartDAO;
 import com.linh.pttkht2.controller.impl.CartDAOImpl;
-import com.linh.pttkht2.model.Book;
-import com.linh.pttkht2.model.Cart;
-import com.linh.pttkht2.model.Item;
+import com.linh.pttkht2.model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +26,8 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getServletPath();
+
+        checkAlreadyLoggedIn(request, response);
 
         try {
             switch (action) {
@@ -71,9 +72,25 @@ public class CartServlet extends HttpServlet {
     private void getListCartPayment(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         Cart carts = cartDAO.get();
-        List<Item> item=carts.getItems();
-        request.setAttribute("payment",item);
+
+        double bookPrice = 0;
+        for (Item cartItem : carts.getItems()) {
+            bookPrice += cartItem.getQuantity() * cartItem.getBook().getPrice();
+        }
+
+        Shipment shipment = new Shipment(1, 10000, null);
+
+        request.setAttribute("payment",carts.getItems());
+        request.setAttribute("shipment", shipment);
+        request.setAttribute("bookPrice", bookPrice);
+        request.setAttribute("totalPrice", bookPrice + shipment.getPrice());
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
+
+        HttpSession session = request.getSession(false);
+        Payment payment = new Payment(0, bookPrice, null);
+        Order order = new Order(0, null, bookPrice + shipment.getPrice(), null, (Customer) session.getAttribute("customer"), payment, shipment);
+        session.setAttribute("order", order);
+
         dispatcher.forward(request, response);
     }
 
@@ -82,7 +99,15 @@ public class CartServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         cartDAO.delete(id);
         response.sendRedirect("listCart");
-
     }
 
+    private void checkAlreadyLoggedIn(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        Customer sessionCustomer = (Customer) session.getAttribute("customer");
+
+        if (sessionCustomer == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
 }
