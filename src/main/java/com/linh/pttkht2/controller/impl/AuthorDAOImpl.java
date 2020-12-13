@@ -4,9 +4,13 @@ package com.linh.pttkht2.controller.impl;
 import com.linh.pttkht2.controller.dao.AuthorDAO;
 import com.linh.pttkht2.model.Author;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
+
+	private static final String SEARCH = "select * from Account where username = ? and password = ?";
 
 	public void addAuthor(Author a) {
 		// TODO - implement AuthorDAOImpl.addAuthor
@@ -18,9 +22,32 @@ public class AuthorDAOImpl extends ConnectionDAO implements AuthorDAO {
 		throw new UnsupportedOperationException();
 	}
 
-	public Author getAuthor(int id) {
-		// TODO - implement AuthorDAOImpl.getAuthor
-		throw new UnsupportedOperationException();
+	public Author getAuthor(Author author) {
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			if(connection != null) {
+				stmt = connection.createStatement();
+				String strQuery = "select authorID, Name "
+						+ "from author where author.authorID = book.AuthorAuthorID";
+				rs = stmt.executeQuery(strQuery);
+				while(rs.next()) {
+					Author dbAuthor = new Author(author.getAuthorID(),author.getName(),author.getDob());
+					dbAuthor.setAuthorID(rs.getInt(1));
+					dbAuthor.setName(rs.getString(2));
+					dbAuthor.setDob(rs.getDate(3));
+				}
+			}
+		} catch (SQLException e) {
+			for(Throwable t: e) {
+				t.printStackTrace();
+			}
+		} catch (Exception et) {
+			et.printStackTrace();
+		}
+
+		return author;
 	}
 
 	public void update(Author a) {

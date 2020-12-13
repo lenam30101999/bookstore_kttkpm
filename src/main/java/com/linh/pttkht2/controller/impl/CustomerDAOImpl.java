@@ -11,13 +11,11 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 
 	private static final String check = "select * from Customer where username = ? and password = ?";
 	public Customer checkLogin(Customer customerCheck) {
-		Customer customer=new Customer();
-		customer=null;
+		Customer customer = null;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(check);
 			preparedStatement.setString(1, customerCheck.getUsername());
 			preparedStatement.setString(2, customerCheck.getPassword());
-			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				int id = rs.getInt("CustID");

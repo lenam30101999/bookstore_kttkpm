@@ -2,6 +2,7 @@ package com.linh.pttkht2.model;
 
 public class Book_Cate {
 
-	private int id;
+	private int cateID;
+	private int BookID;
 
 }
