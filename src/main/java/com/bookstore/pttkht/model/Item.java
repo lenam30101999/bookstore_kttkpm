@@ -7,16 +7,18 @@ public class Item {
 	private int itemID;
 	private String name;
 	private int quantity;
-	private List<CartItem> cartItems;
+	private long price;
+	private List<Cart> carts;
 
 	public Item() {
 	}
 
-	public Item(int itemID, String name, int quantity, List<CartItem> cartItems) {
+	public Item(int itemID, String name, int quantity, long price, List<Cart> carts) {
 		this.itemID = itemID;
 		this.name = name;
 		this.quantity = quantity;
-		this.cartItems = cartItems;
+		this.price = price;
+		this.carts = carts;
 	}
 
 	public int getItemID() {
@@ -43,12 +45,19 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public List<CartItem> getCartItems() {
-		return cartItems;
+	public long getPrice() {
+		return price;
 	}
 
-	public void setCartItems(List<CartItem> cartItems) {
-		this.cartItems = cartItems;
+	public void setPrice(long price) {
+		this.price = price;
 	}
 
+	public List<Cart> getCarts() {
+		return carts;
+	}
+
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
 }

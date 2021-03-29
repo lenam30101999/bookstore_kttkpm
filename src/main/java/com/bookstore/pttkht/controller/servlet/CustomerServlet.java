@@ -78,7 +78,7 @@ public class CustomerServlet extends HttpServlet {
         String city = request.getParameter("city");
         String street = request.getParameter("street");
         String country = request.getParameter("country");
-        Customer customer = new Customer(1,phoneNumber,firstName,middleName,lastName,city,street,username,password, age, country, null);
+        Customer customer = new Customer(1,phoneNumber,firstName,middleName,lastName,city,street,username,password, age, country);
 
         customerDAO.addCustomer(customer);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

@@ -7,24 +7,9 @@ import java.util.List;
 
 public class PaymentDAOImpl extends ConnectionDAO implements PaymentDAO {
 
-	public void add(Payment p) {
-		// TODO - implement PaymentDAOImpl.add
-		throw new UnsupportedOperationException();
-	}
-
-	public List<Shipment> get() {
-		// TODO - implement PaymentDAOImpl.get
-		throw new UnsupportedOperationException();
-	}
-
-	public Shipment get(int id) {
-		// TODO - implement PaymentDAOImpl.get
-		throw new UnsupportedOperationException();
-	}
-
-	public void update(Payment p) {
-		// TODO - implement PaymentDAOImpl.update
-		throw new UnsupportedOperationException();
+	@Override
+	public Payment getPayment(int paymentId) {
+		return null;
 	}
 
 	public void delete(int id) {

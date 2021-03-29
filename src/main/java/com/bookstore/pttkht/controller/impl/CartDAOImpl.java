@@ -15,24 +15,23 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 	protected Cart cart = new Cart();
 	int id;
 
-	public Cart add(Book book, int quantity) {
-		String SEARCH_BOOK = "SELECT BookID, Name, NumPage, Price FROM pttkht_btl.Book WHERE BookID = ?";
-		Item item = new Item();
+	public Cart add(Item item, int quantity) {
+		String SEARCH_ITEM = "SELECT Id, Name, Qty, Price FROM item WHERE Id = ?";
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_BOOK);
-			preparedStatement.setInt(1, book.getBookID());
+			PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_ITEM);
+			preparedStatement.setInt(1, item.getItemID());
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				book.setBookID(rs.getInt("BookID"));
-				book.setName(rs.getString("Name"));
-				book.setNumPage(rs.getInt("NumPage"));
-				book.setPrice(rs.getDouble("Price"));
+				item.setItemID(rs.getInt("Id"));
+				item.setName(rs.getString("Name"));
+				item.setQuantity(rs.getInt("Qty"));
+				item.setPrice(rs.getLong("Price"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		if (book != null && quantity > 0){
+		if (item != null && quantity > 0){
 			List<Item> items = cart.getItems();
 
 			if (Objects.isNull(items)){
@@ -40,8 +39,8 @@ public class CartDAOImpl extends ConnectionDAO implements CartDAO {
 			}
 
 			item.setItemID(id);
-			item.setBook(book);
-			item.setName(book.getName());
+			item.setPrice(item.getPrice());
+			item.setName(item.getName());
 			item.setQuantity(quantity);
 
 			if (checkExist(item, items)){

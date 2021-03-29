@@ -1,6 +1,9 @@
 package com.bookstore.pttkht.controller.servlet;
 
+import com.bookstore.pttkht.controller.dao.ItemDAO;
+import com.bookstore.pttkht.controller.impl.ItemDAOImpl;
 import com.bookstore.pttkht.model.Customer;
+import com.bookstore.pttkht.model.Item;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,8 +15,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class BookServlet extends HttpServlet {
-    BookDAO bookDAO = new BookDAOImpl();
+public class ItemServlet extends HttpServlet {
+    ItemDAO itemDAO = new ItemDAOImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,8 +47,8 @@ public class BookServlet extends HttpServlet {
 
     private void getList(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Book> books = bookDAO.getAllBook();
-        request.setAttribute("listBook", books);
+        List<Item> items = itemDAO.getItems();
+        request.setAttribute("listBook", items);
         RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
         dispatcher.forward(request, response);
     }
@@ -54,8 +57,8 @@ public class BookServlet extends HttpServlet {
     private void getBook(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        Book book = bookDAO.getBook(id);
-        request.setAttribute("infobook", book);
+        Item item = itemDAO.getItem(id);
+        request.setAttribute("infobook", item);
         RequestDispatcher dispatcher = request.getRequestDispatcher("infobook.jsp");
         dispatcher.forward(request, response);
     }

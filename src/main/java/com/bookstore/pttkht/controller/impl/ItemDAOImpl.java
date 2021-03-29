@@ -20,20 +20,23 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 		List<Item> items = new ArrayList<>();
 		ResultSet rs = null;
 		try {
-			String strQuery = "select BookID, book.name AS book_name, book.price from book";
+			String strQuery = "select id, name, price, Qty from item";
 			PreparedStatement preparedStatement = connection.prepareStatement(strQuery);
 			rs = preparedStatement.executeQuery(strQuery);
 			System.out.println(strQuery);
 
 			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
-				int bookId = rs.getInt("BookID");
-				String name = rs.getString("book_name");
-				double price =rs.getDouble("price");
+				int bookId = rs.getInt("id");
+				String name = rs.getString("name");
+				long price =rs.getInt("price");
+				int quantity = rs.getInt("Qty");
 
 				Item item =new Item();
 				item.setItemID(bookId);
 				item.setName(name);
+				item.setPrice(price);
+				item.setQuantity(quantity);
 
 				items.add(item);
 			}
@@ -43,19 +46,27 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 		return items;
 	}
 
+	@Override
 	public Item getItem(int id) {
-		// TODO - implement ItemDAOImpl.getItem
-		throw new UnsupportedOperationException();
-	}
+		Item item = null;
+		try {
+			String QUERY_GET_ITEM = "select `Name`, `Qty`, `price` from item where Id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GET_ITEM);
+			preparedStatement.setInt(1, id);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				id = rs.getInt("id");
+				String name = rs.getString("Name");
+				int qty = rs.getInt("Qty");
+				int price = rs.getInt("price");
 
-	public void update(Item i) {
-		// TODO - implement ItemDAOImpl.update
-		throw new UnsupportedOperationException();
-	}
+				item= new Item(id, name, qty, price, null);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	public void delete(int id) {
-		// TODO - implement ItemDAOImpl.delete
-		throw new UnsupportedOperationException();
+		return item;
 	}
 
 }

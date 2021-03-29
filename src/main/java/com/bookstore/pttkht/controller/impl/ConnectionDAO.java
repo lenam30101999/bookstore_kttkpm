@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionDAO {
-    protected String jdbcURL = "jdbc:mysql://localhost:3306/pttkht_btl";
+    protected String jdbcURL = "jdbc:mysql://localhost:3306/kttkpm1";
     protected String jdbcUsername = System.getenv("DB_USERNAME");
     protected String jdbcPassword = System.getenv("DB_PASSWORD");
     protected static Connection connection;

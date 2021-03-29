@@ -3,7 +3,6 @@ package com.bookstore.pttkht.controller.servlet;
 import com.bookstore.pttkht.controller.impl.CartDAOImpl;
 import com.bookstore.pttkht.controller.dao.CartDAO;
 import com.bookstore.pttkht.model.*;
-import com.ducanh.pttkht.model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,10 +51,10 @@ public class CartServlet extends HttpServlet {
     private void addToCart(HttpServletRequest request, HttpServletResponse response)
         throws SQLException, IOException, ServletException {
         Item item = new Item();
-        int quantity=1;
+        int quantity = 1;
         int id = Integer.parseInt(request.getParameter("id"));
         item.setItemID(id);
-        cartDAO.add(item);
+        cartDAO.add(item, quantity);
         response.sendRedirect("list");
     }
 
@@ -74,20 +73,18 @@ public class CartServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         Cart carts = cartDAO.get();
 
-        double bookPrice = 0;
+        double itemPrice = 0;
         for (Item cartItem : carts.getItems()) {
-            bookPrice += cartItem.getQuantity() * cartItem.getBook().getPrice();
+            itemPrice += cartItem.getQuantity() * cartItem.getPrice();
         }
 
         request.setAttribute("payment",carts.getItems());
-        request.setAttribute("shipment", shipment);
-        request.setAttribute("bookPrice", bookPrice);
-        request.setAttribute("totalPrice", bookPrice + shipment.getPrice());
+        request.setAttribute("totalPrice", itemPrice);
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
 
         HttpSession session = request.getSession(false);
-        Payment payment = new Payment(0, bookPrice, null);
-        Order order = new Order(0, null, bookPrice + shipment.getPrice(), null, (Customer) session.getAttribute("customer"), payment, shipment);
+        Payment payment = new Payment(0, itemPrice, null);
+        Order order = new Order(0, null, itemPrice , null, (Customer) session.getAttribute("customer"), payment);
         session.setAttribute("order", order);
 
         dispatcher.forward(request, response);

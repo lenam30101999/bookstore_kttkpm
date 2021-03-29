@@ -9,7 +9,7 @@ import java.sql.*;
 public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
 
     public void addOrder(Order order) throws SQLException {
-        String sql = "INSERT INTO pttkht_btl.Cart(totalQuantity) VALUES (?)";
+        String sql = "INSERT INTO Cart(TotalQty) VALUES (?)";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -20,41 +20,27 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
         }
 
         //TODO: Get customerId
-        int customerId = order.getCustomer().getCustID();
+        int customerId = order.getCustomer().getId();
         int cartID = getNewOrderId();
 
-        String shipmentInsertSql = "INSERT INTO Shipment VALUES (null, 10000.0)";
-        Statement statement = connection.createStatement();
-        statement.execute(shipmentInsertSql, Statement.RETURN_GENERATED_KEYS);
-
-        ResultSet generatedKeys = statement.getGeneratedKeys();
-        int shipmentKey = 0;
-        if (generatedKeys.next()) {
-            shipmentKey = generatedKeys.getInt(1);
-        }
-
-        int shipID = getNewShipmentId();
-
-        String itemInsertSql = "INSERT INTO pttkht_btl.Item(`BookID`, `CartID`, `Name`, `Quantity`) VALUES (?, ?, ?, ?)";
+        String itemInsertSql = "INSERT INTO Item(`Name`, `Qty`, `price`) VALUES (?, ?, ?)";
         if (order.getCart().getItems() != null){
             for (Item item : order.getCart().getItems()){
                 PreparedStatement psmt = connection.prepareStatement(itemInsertSql);
-                psmt.setInt(1, item.getBook().getBookID());
-                psmt.setInt(2, cartID);
-                psmt.setString(3, item.getName());
-                psmt.setInt(4, item.getQuantity());
+                psmt.setString(1, item.getName());
+                psmt.setInt(2, item.getQuantity());
+                psmt.setLong(3, item.getPrice());
                 psmt.executeUpdate();
             }
         }else System.out.println("ZERO: " + 0);
 
-        String paymentInsertSql = "INSERT INTO Payment VALUES (0, ?, ?, ?)";
+        String paymentInsertSql = "INSERT INTO Payment(CartId, Price) VALUES (?, ?)";
         PreparedStatement psmt = connection.prepareStatement(paymentInsertSql, Statement.RETURN_GENERATED_KEYS);
-        psmt.setInt(1, shipID);
-        psmt.setInt(2, cartID);
-        psmt.setDouble(3, order.getPrice());
+        psmt.setInt(1, cartID);
+        psmt.setDouble(2, order.getPrice());
         psmt.execute();
 
-        generatedKeys = psmt.getGeneratedKeys();
+        ResultSet generatedKeys = psmt.getGeneratedKeys();
         int paymentKey = 0;
         if (generatedKeys.next()) {
             paymentKey = generatedKeys.getInt(1);
@@ -62,14 +48,13 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
 
         long currentDate = new java.util.Date().getTime();
 
-		String orderInsertSql = "INSERT INTO `Order` VALUES (null, ?, ?, ?, ?, ?,?)";
+		String orderInsertSql = "INSERT INTO `order`(CartId, PaymentId, CustomerId, Date, TotalPrice) VALUES (?, ?, ?, ?, ?)";
         psmt = connection.prepareStatement(orderInsertSql);
-        psmt.setInt(1, paymentKey);
-        psmt.setInt(2, customerId);
-        psmt.setInt(3, shipmentKey);
-        psmt.setInt(4, cartID);
-        psmt.setDate(5, new Date(currentDate));
-        psmt.setDouble(6, order.getPrice());
+        psmt.setInt(1, cartID);
+        psmt.setInt(2, paymentKey);
+        psmt.setInt(3, customerId);
+        psmt.setDate(4, new Date(currentDate));
+        psmt.setDouble(5, order.getPrice());
         psmt.execute();
     }
 
@@ -110,7 +95,7 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
     }
 
     private int getNewOrderId(){
-        String sql = "SELECT CartID FROM pttkht_btl.Cart WHERE CartID IN (SELECT MAX(CartID) FROM pttkht_btl.Cart)";
+        String sql = "SELECT Id FROM Cart WHERE Id IN (SELECT MAX(Id) FROM Cart)";
         ResultSet rs = null;
         int cartID = 0;
         try {
@@ -123,22 +108,6 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
           e.printStackTrace();
         }
         return cartID;
-    }
-
-    private int getNewShipmentId(){
-        String sql = "SELECT ShipID FROM pttkht_btl.Shipment WHERE ShipID IN (SELECT MAX(ShipID) FROM pttkht_btl.Shipment)";
-        ResultSet rs = null;
-        int shipID = 0;
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            rs = preparedStatement.executeQuery(sql);
-            while (rs.next()) {
-                shipID = rs.getInt("ShipID");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return shipID;
     }
 
 }

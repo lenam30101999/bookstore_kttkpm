@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 
-	private static final String check = "select * from Customer where username = ? and password = ?";
+	private static final String check = "select * from customer where username = ? and password = ?";
 	public Customer checkLogin(Customer customerCheck) {
 		Customer customer = null;
 		try {
@@ -18,17 +18,19 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 			preparedStatement.setString(2, customerCheck.getPassword());
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				int id = rs.getInt("CustID");
-				String phoneNum = rs.getString("PhoneNum");
-				String firstname = rs.getString("FirstName");
-				String middlename = rs.getString("MiddleName");
-				String lastname = rs.getString("LastName");
-				String city = rs.getString("City");
-				String street = rs.getString("Street");
+				int id = rs.getInt("id");
+				String phoneNum = rs.getString("phoneNo");
+				String firstname = rs.getString("firstName");
+				String middlename = rs.getString("middleName");
+				String lastname = rs.getString("lastName");
+				String city = rs.getString("city");
+				String street = rs.getString("street");
 				String username = rs.getString("username");
 				String password = rs.getString("password");
+				String age = rs.getString("age");
+				String country = rs.getString("country");
 
-				customer= new Customer(id,phoneNum,firstname,middlename,lastname,city,street,username,password,null);
+				customer= new Customer(id,phoneNum,firstname,middlename,lastname,city,street,username,password,age, country);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -39,8 +41,8 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 
 	public void addCustomer(Customer customer) {
 		// TODO - implement CustomerDAOImpl.addCustomer
-		String sql = "INSERT INTO `pttkht_btl`.`customer` (`PhoneNum`, `FirstName`, `MiddleName`, `LastName`, `City`, `Street`, `Username`, `Password`) " +
-				"VALUES (?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO customer (`phoneNo`, `firstName`, `middleName`, `lastName`, `city`, `street`, `username`, `password`, `country`, `age`) " +
+				"VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
@@ -52,32 +54,13 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 			ps.setString(6, customer.getStreet());
 			ps.setString(7, customer.getUsername());
 			ps.setString(8, customer.getPassword());
+			ps.setString(9, customer.getCountry());
+			ps.setString(10, customer.getAge());
 			System.out.println(ps);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-
-	public void getCustomer() {
-		// TODO - implement CustomerDAOImpl.getCustomer
-		throw new UnsupportedOperationException();
-	}
-
-	public void getAllCustomer() {
-		// TODO - implement CustomerDAOImpl.getAllCustomer
-		throw new UnsupportedOperationException();
-	}
-
-	public void update() {
-		// TODO - implement CustomerDAOImpl.update
-		throw new UnsupportedOperationException();
-	}
-
-	public void delete() {
-		// TODO - implement CustomerDAOImpl.delete
-		throw new UnsupportedOperationException();
 	}
 
 }

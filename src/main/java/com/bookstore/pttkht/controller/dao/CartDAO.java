@@ -5,9 +5,9 @@ import com.bookstore.pttkht.model.Item;
 
 public interface CartDAO {
 
-
 	void save(Cart cart);
-	void add(Item item);
+
+	Cart add(Item item, int quantity);
 
 	Cart get();
 

@@ -6,13 +6,7 @@ import java.util.List;
 
 public interface PaymentDAO {
 
-	void add(Payment p);
-
-	List<Shipment> get();
-
-	Shipment get(int id);
-
-	void update(Payment p);
+	Payment getPayment(int paymentId);
 
 	void delete(int id);
 

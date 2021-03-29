@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>bookServlet</servlet-name>
-        <servlet-class>com.bookstore.pttkht.controller.servlet.BookServlet</servlet-class>
+        <servlet-class>com.bookstore.pttkht.controller.servlet.ItemServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>bookServlet</servlet-name>

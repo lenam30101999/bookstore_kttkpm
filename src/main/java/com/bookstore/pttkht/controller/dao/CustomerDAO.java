@@ -7,12 +7,4 @@ public interface CustomerDAO {
 
 	void addCustomer(Customer customer);
 
-	void getCustomer();
-
-	void getAllCustomer();
-
-	void update();
-
-	void delete();
-
 }
