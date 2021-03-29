@@ -57,7 +57,7 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 			ps.setString(9, customer.getCountry());
 			ps.setString(10, customer.getAge());
 			System.out.println(ps);
-			ps.executeUpdate();
+			ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
