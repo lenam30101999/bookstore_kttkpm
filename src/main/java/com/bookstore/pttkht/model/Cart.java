@@ -5,15 +5,15 @@ import java.util.List;
 public class Cart {
 	private int cartID;
 	private int totalQuantity;
-	private List<Item> items;
+	private List<CartItem> cartItems;
 
 	public Cart() {
 	}
 
-	public Cart(int cartID, int totalQuantity, Payment payment, Shipment shipment, List<Item> items) {
+	public Cart(int cartID, int totalQuantity, List<CartItem> cartItems) {
 		this.cartID = cartID;
 		this.totalQuantity = totalQuantity;
-		this.items = items;
+		this.cartItems = cartItems;
 	}
 
 	public int getCartID() {
@@ -32,20 +32,11 @@ public class Cart {
 		this.totalQuantity = totalQuantity;
 	}
 
-	public List<Item> getItems() {
-		return items;
+	public List<CartItem> getCartItems() {
+		return cartItems;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-
-	@Override
-	public String toString() {
-		return "Cart{" +
-				"cartID=" + cartID +
-				", totalQuantity=" + totalQuantity +
-				", items=" + items +
-				'}';
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
 	}
 }

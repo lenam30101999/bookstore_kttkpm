@@ -1,22 +1,22 @@
 package com.bookstore.pttkht.model;
 
-import java.util.Objects;
+import java.util.List;
 
 public class Item {
 
 	private int itemID;
 	private String name;
 	private int quantity;
-	private Cart cart;
+	private List<CartItem> cartItems;
 
 	public Item() {
 	}
 
-	public Item(int itemID, String name, int quantity, Cart cart) {
+	public Item(int itemID, String name, int quantity, List<CartItem> cartItems) {
 		this.itemID = itemID;
 		this.name = name;
 		this.quantity = quantity;
-		this.cart = cart;
+		this.cartItems = cartItems;
 	}
 
 	public int getItemID() {
@@ -43,35 +43,12 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public Cart getCart() {
-		return cart;
+	public List<CartItem> getCartItems() {
+		return cartItems;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Item item = (Item) o;
-		return itemID == item.itemID &&
-				quantity == item.quantity &&
-				Objects.equals(name, item.name);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(itemID, name, quantity);
-	}
-
-	@Override
-	public String toString() {
-		return "Item{" +
-				"itemID=" + itemID +
-				", name='" + name + '\'' +
-				", quantity=" + quantity +
-				'}';
-	}
 }

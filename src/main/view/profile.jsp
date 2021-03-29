@@ -42,7 +42,7 @@
                 <%= ((Customer) session.getAttribute("customer")).getFirstName() %></li>
             <li class="list-group-item">City: <%= ((Customer) session.getAttribute("customer")).getCity() %></li>
             <li class="list-group-item">Street: <%= ((Customer) session.getAttribute("customer")).getStreet() %></li>
-            <li class="list-group-item">Phone Number: <%= ((Customer) session.getAttribute("customer")).getPhoneNum() %> </li>
+            <li class="list-group-item">Phone Number: <%= ((Customer) session.getAttribute("customer")).getPhoneNo() %> </li>
         </ul>
         <br>
         <div class="container text-right">

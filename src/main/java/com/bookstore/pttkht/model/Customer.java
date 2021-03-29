@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Customer {
 
-	private int custID;
-	private String phoneNum;
+	private int id;
+	private String phoneNo;
 	private String firstName;
 	private String middleName;
 	private String lastName;
@@ -15,15 +15,14 @@ public class Customer {
 	private String password;
 	private String age;
 	private String country;
-	private List<Order> orders;
 
 	public Customer() {
 	}
 
-	public Customer(int custID, String phoneNum, String firstName, String middleName, String lastName, String city,
-					String street, String username, String password, String age, String country, List<Order> orders) {
-		this.custID = custID;
-		this.phoneNum = phoneNum;
+	public Customer(int id, String phoneNo, String firstName, String middleName, String lastName, String city,
+									String street, String username, String password, String age, String country) {
+		this.id = id;
+		this.phoneNo = phoneNo;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -33,23 +32,38 @@ public class Customer {
 		this.password = password;
 		this.age = age;
 		this.country = country;
-		this.orders = orders;
 	}
 
-	public int getCustID() {
-		return custID;
+	public int getId() {
+		return id;
 	}
 
-	public void setCustID(int custID) {
-		this.custID = custID;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getPhoneNum() {
-		return phoneNum;
+	public String getAge() {
+		return age;
 	}
 
-	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
 	}
 
 	public String getFirstName() {
@@ -106,13 +120,5 @@ public class Customer {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
 	}
 }

@@ -44,7 +44,7 @@ public class CustomerDAOImpl extends ConnectionDAO implements CustomerDAO {
 
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);
-			ps.setString(1, customer.getPhoneNum());
+			ps.setString(1, customer.getPhoneNo());
 			ps.setString(2, customer.getFirstName());
 			ps.setString(3, customer.getMiddleName());
 			ps.setString(4, customer.getLastName());
