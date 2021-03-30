@@ -59,22 +59,6 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
 
     public Order getOrder() {
         // TODO - implement OrderDAOImpl.getOrder
-//		List<Item> items = new ArrayList<>();
-//		ResultSet rs = null;
-//		try {
-//			String strQuery = "SELECT * FROM pttkht_btl.order;";
-//			PreparedStatement preparedStatement = connection.prepareStatement(strQuery);
-//			rs = preparedStatement.executeQuery(strQuery);
-//			while (rs.next()) {
-//				int bookId = rs.getInt("BookID");
-//				String name = rs.getString("book_name");
-//
-//				items.add(item);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return items;
         throw new UnsupportedOperationException();
     }
 
