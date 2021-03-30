@@ -19,7 +19,7 @@
 
         <ul class="navbar-nav">
             <li><a href="<%=request.getContextPath()%>/list"
-                   class="nav-link">BOOK</a></li>
+                   class="nav-link">ITEM</a></li>
         </ul>
     </nav>
 </header>
@@ -37,7 +37,7 @@
         <table class="table table-bordered" style="background-color:lightyellow">
             <thead>
             <tr>
-                <th>Book Name</th>
+                <th>Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Action</th>
@@ -50,17 +50,17 @@
                 <tr>
                     <td><c:out value="${item.name}" /></td>
                     <td><c:out value="${item.quantity}" /></td>
-                    <td><c:out value="${item.book.price}" /></td>
+                    <td><c:out value="${item.price}" /></td>
                     <td><a href="delete?id=<c:out value='${item.itemID}' />" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
 
-            <!-- } -->
-            </tbody>
+                <!-- } -->
+                </tbody>
             </c:forEach>
         </table>
         <div class="container text-right">
-            <a href="<%=request.getContextPath()%>/shipment.jsp" class="btn btn-primary">Shipment</a>
+            <a href="<%=request.getContextPath()%>/payment" class="btn btn-primary">Payment</a>
         </div>
     </div>
 </div>

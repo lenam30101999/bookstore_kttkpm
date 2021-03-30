@@ -73,7 +73,7 @@ public class CartServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         Cart carts = cartDAO.get();
 
-        double itemPrice = 0;
+        long itemPrice = 0;
         for (Item cartItem : carts.getItems()) {
             itemPrice += cartItem.getQuantity() * cartItem.getPrice();
         }

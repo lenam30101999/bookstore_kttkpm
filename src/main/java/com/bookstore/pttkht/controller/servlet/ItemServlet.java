@@ -48,7 +48,7 @@ public class ItemServlet extends HttpServlet {
     private void getList(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<Item> items = itemDAO.getItems();
-        request.setAttribute("listBook", items);
+        request.setAttribute("listItem", items);
         RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
         dispatcher.forward(request, response);
     }

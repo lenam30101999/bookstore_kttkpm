@@ -20,7 +20,7 @@
 
         <ul class="navbar-nav">
             <li><a href="<%=request.getContextPath()%>/list"
-                   class="nav-link">BOOK LIST</a></li>
+                   class="nav-link">ITEM LIST</a></li>
         </ul>
     </nav>
 </header>
@@ -52,4 +52,3 @@
 </div>
 </body>
 </html>
-

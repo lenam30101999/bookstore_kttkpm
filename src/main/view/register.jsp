@@ -27,53 +27,64 @@
 <div class="container col-md-5">
     <div class="card">
         <div class="card-body" style="background-color:lightcyan">
-                <form action="insert" method="post">
+            <form action="insert" method="post">
 
-                    <caption>
-                        <h2>REGISTER</h2>
-                    </caption>
-                    <fieldset class="form-group" >
-                        <label>User Name</label> <input type="text" class="form-control"
-                                                        name="username" required="required">
-                    </fieldset>
+                <caption>
+                    <h2>REGISTER</h2>
+                </caption>
+                <fieldset class="form-group" >
+                    <label>User Name</label> <input type="text" class="form-control"
+                                                    name="username" required="required">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>Password</label> <input type="text" class="form-control"
-                                                       name="password">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>Password</label> <input type="text" class="form-control"
+                                                   name="password">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>Phone Number</label> <input type="text" class="form-control"
+                <fieldset class="form-group">
+                    <label>Phone Number</label> <input type="text" class="form-control"
                                                        name="phoneNumber">
-                    </fieldset>
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>FirstName</label> <input type="text" class="form-control"
-                                                           name="firstName">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>FirstName</label> <input type="text" class="form-control"
+                                                    name="firstName">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>MiddleName</label> <input type="text" class="form-control"
-                                                           name="middleName">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>MiddleName</label> <input type="text" class="form-control"
+                                                     name="middleName">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>Last Name</label> <input type="text" class="form-control"
-                                                           name="lastName">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>Last Name</label> <input type="text" class="form-control"
+                                                    name="lastName">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>City</label> <input type="text" class="form-control"
-                                                           name="city">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>Age</label> <input type="text" class="form-control"
+                                              name="age">
+                </fieldset>
 
-                    <fieldset class="form-group">
-                        <label>Street</label> <input type="text" class="form-control"
-                                                           name="street">
-                    </fieldset>
+                <fieldset class="form-group">
+                    <label>Country</label> <input type="text" class="form-control"
+                                                  name="country">
+                </fieldset>
 
-                    <button type="submit" class="btn btn-success">Register</button>
-                </form>
+                <fieldset class="form-group">
+                    <label>City</label> <input type="text" class="form-control"
+                                               name="city">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Street</label> <input type="text" class="form-control"
+                                                 name="street">
+                </fieldset>
+
+
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
         </div>
     </div>
 </div>

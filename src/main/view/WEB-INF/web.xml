@@ -15,13 +15,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>bookServlet</servlet-name>
+        <servlet-name>itemServlet</servlet-name>
         <servlet-class>com.bookstore.pttkht.controller.servlet.ItemServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>bookServlet</servlet-name>
+        <servlet-name>itemServlet</servlet-name>
         <url-pattern>/list</url-pattern>
-        <url-pattern>/infobook</url-pattern>
+        <url-pattern>/infoItem</url-pattern>
     </servlet-mapping>
 
     <servlet>

@@ -1,5 +1,4 @@
-<%@ page import="com.ducanh.pttkht.model.Shipment" %>
-<%@ page import="com.ducanh.pttkht.model.Shipment" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -26,7 +25,7 @@
 
         <ul class="navbar-nav">
             <li><a href="<%=request.getContextPath()%>/list"
-                   class="nav-link">BOOK LIST</a></li>
+                   class="nav-link">ITEM LIST</a></li>
         </ul>
     </nav>
 </header>
@@ -42,7 +41,7 @@
         <table class="table table-bordered" style="background-color:lightyellow">
             <thead>
             <tr>
-                <th>Book Name</th>
+                <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
@@ -54,7 +53,7 @@
                 <tr>
                     <td><c:out value="${item.name}" /></td>
                     <td><c:out value="${item.quantity}" /></td>
-                    <td><c:out value="${item.book.price}" /></td>
+                    <td><c:out value="${item.price}" /></td>
                 </tr>
                 </tbody>
             </c:forEach>
@@ -66,16 +65,13 @@
 <div class="container text-right" style="background-color:lightsteelblue">
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            Book Price:
-            <span class="badge badge-primary badge-pill"><%= request.getAttribute("bookPrice") %></span>
+            Item Quantity:
+            <span class="badge badge-primary badge-pill"><%= request.getAttribute("itemQuantity") %></span>
         </li>
+
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            Shipment:
-            <span class="badge badge-primary badge-pill"><%= ((Shipment) request.getAttribute("shipment")).getPrice() %></span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Total:
-            <span class="badge badge-primary badge-pill"><%= request.getAttribute("totalPrice") %></span>
+            Total Price:
+            <span class="badge badge-primary badge-pill"><%= request.getAttribute("totalPrice") %> VND</span>
         </li>
     </ul>
 </div>

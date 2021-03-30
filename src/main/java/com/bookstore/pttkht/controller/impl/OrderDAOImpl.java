@@ -23,13 +23,12 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
         int customerId = order.getCustomer().getId();
         int cartID = getNewOrderId();
 
-        String itemInsertSql = "INSERT INTO Item(`Name`, `Qty`, `price`) VALUES (?, ?, ?)";
+        String itemInsertSql = "INSERT INTO cart_Iiem(CartId, ItemId) VALUES (?, ?)";
         if (order.getCart().getItems() != null){
             for (Item item : order.getCart().getItems()){
                 PreparedStatement psmt = connection.prepareStatement(itemInsertSql);
-                psmt.setString(1, item.getName());
+                psmt.setInt(1, cartID);
                 psmt.setInt(2, item.getQuantity());
-                psmt.setLong(3, item.getPrice());
                 psmt.executeUpdate();
             }
         }else System.out.println("ZERO: " + 0);
@@ -102,7 +101,7 @@ public class OrderDAOImpl extends ConnectionDAO implements OrderDAO {
           PreparedStatement preparedStatement = connection.prepareStatement(sql);
           rs = preparedStatement.executeQuery(sql);
           while (rs.next()) {
-            cartID = rs.getInt("CartID");
+            cartID = rs.getInt("Id");
           }
         } catch (SQLException e) {
           e.printStackTrace();

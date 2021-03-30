@@ -24,7 +24,7 @@
 
         <ul class="navbar-nav">
             <li><a href="<%=request.getContextPath()%>/list"
-                   class="nav-link">BOOK LIST</a></li>
+                   class="nav-link">ITEM LIST</a></li>
         </ul>
     </nav>
 </header>
@@ -39,7 +39,7 @@
         <br>
         <ul class="list-group" style="background-color:lightcyan">
             <li class="list-group-item active">Order Information</li>
-            <li class="list-group-item">Order ID: <%= ((Customer) session.getAttribute("customer")).getCustID() %></li>
+            <li class="list-group-item">Order ID: <%= ((Customer) session.getAttribute("customer")).getId() %></li>
             <li class="list-group-item">Date: <%= LocalDate.now() %></li>
             <li class="list-group-item">Customer: <%= ((Customer) session.getAttribute("customer")).getLastName() %>
                 <%= ((Customer) session.getAttribute("customer")).getMiddleName() %>
@@ -55,7 +55,7 @@
         <table class="table table-bordered" style="background-color:lightyellow">
             <thead>
             <tr>
-                <th>Book Name</th>
+                <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
@@ -67,7 +67,7 @@
                 <tr>
                     <td><c:out value="${item.name}" /></td>
                     <td><c:out value="${item.quantity}" /></td>
-                    <td><c:out value="${item.book.price}" /></td>
+                    <td><c:out value="${item.price}" /></td>
                 </tr>
 
                 <!-- } -->

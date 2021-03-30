@@ -60,4 +60,15 @@ public class Item {
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
 	}
+
+	@Override
+	public String toString() {
+		return "Item{" +
+				"itemID=" + itemID +
+				", name='" + name + '\'' +
+				", quantity=" + quantity +
+				", price=" + price +
+				", carts=" + carts +
+				'}';
+	}
 }

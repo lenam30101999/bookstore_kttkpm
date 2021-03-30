@@ -12,12 +12,12 @@
 <body>
 
 <header>
-<%--    <h1 style="background-color: lightyellow">  <span class="badge badge-secondary" style="background-color: 	#008080" >BOOK STORE</span></h1>--%>
+    <%--    <h1 style="background-color: lightyellow">  <span class="badge badge-secondary" style="background-color: 	#008080" >BOOK STORE</span></h1>--%>
 
     <nav class="navbar navbar-expand-md navbar-dark"
          style="background-color: 	#008080">
         <div>
-            <a href="" class="navbar-brand">BOOK </a>
+            <a href="" class="navbar-brand">ITEM </a>
         </div>
 
         <ul class="navbar-nav">
@@ -42,30 +42,25 @@
     <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
     <div class="container">
-        <h3 class="text-center">BOOK LIST</h3>
+        <h3 class="text-center">ITEM LIST</h3>
         <hr>
         <br>
         <table class="table table-bordered" style="background-color:#E5FCC2">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Quantity</th>
                 <th>Price</th>
-                <%--            <th>Price</th>--%>
-                <th>Actions</th>
                 <th>Shopping</th>
             </tr>
-            <c:forEach var="book" items="${listBook}">
+            <c:forEach var="item" items="${listItem}">
                 <tr>
-                    <td><c:out value="${book.bookID}" /></td>
-                    <td><c:out value="${book.name}" /></td>
-                    <td><c:out value="${book.price}" /></td>
+                    <td><c:out value="${item.itemID}" /></td>
+                    <td><c:out value="${item.name}" /></td>
+                    <td><c:out value="${item.quantity}" /></td>
+                    <td><c:out value="${item.price}" /></td>
                     <td>
-                        <a href="infobook?id=<c:out value='${book.bookID}'/>" class="btn btn-secondary">Info Book</a>
-                            <%--                    &nbsp;&nbsp;&nbsp;&nbsp;--%>
-                            <%--                    <a href="/delete?id=<c:out value='${book.id}' />">Delete</a>--%>
-                    </td>
-                    <td>
-                        <a href="add?id=<c:out value='${book.bookID}'/>" class="btn btn-success">Add to cart</a>
+                        <a href="add?id=<c:out value='${item.itemID}'/>" class="btn btn-success">Add to cart</a>
                     </td>
                 </tr>
             </c:forEach>

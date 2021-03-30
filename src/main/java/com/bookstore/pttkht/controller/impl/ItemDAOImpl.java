@@ -20,20 +20,19 @@ public class ItemDAOImpl extends ConnectionDAO implements ItemDAO {
 		List<Item> items = new ArrayList<>();
 		ResultSet rs = null;
 		try {
-			String strQuery = "select id, name, price, Qty from item";
+			String strQuery = "select id, name, price, Qty from kttkpm1.item";
 			PreparedStatement preparedStatement = connection.prepareStatement(strQuery);
 			rs = preparedStatement.executeQuery(strQuery);
 			System.out.println(strQuery);
 
-			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
-				int bookId = rs.getInt("id");
+				int itemId = rs.getInt("id");
 				String name = rs.getString("name");
 				long price =rs.getInt("price");
 				int quantity = rs.getInt("Qty");
 
 				Item item =new Item();
-				item.setItemID(bookId);
+				item.setItemID(itemId);
 				item.setName(name);
 				item.setPrice(price);
 				item.setQuantity(quantity);
